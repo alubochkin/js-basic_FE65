@@ -75,10 +75,14 @@ const replacer = (arr) => {
     return arr
         .map(item => `${item}`)
         .map(item => {
-            return item
+            if (item.includes('0')) {
+                return item
                 .split('')
                 .map(item => item === '0' ? 'Zero' : item)
-                .join('')
+                .join('') 
+            } else {
+                return Number(item)
+            }  
         })      
 }
 
