@@ -21,6 +21,19 @@ console.log(getString(string));
 // Дан массив [1,2,3,1,2,3,5,4,6,7,3,2,1,2,3,5,3,3,1,2,3,4,1]
 // Создать массив из элементов которые встречаются только один раз
 
+const arr = [1,2,3,1,2,3,5,4,6,7,3,2,1,2,3,5,3,3,1,2,3,4,1]
+
+const getUniqueNum = (arr) =>{
+  let uniqueNum = [];
+
+  for (let i = 0; i < arr.length; i++){
+    if(arr.indexOf(arr[i]) === arr.lastIndexOf(arr[i])){
+      uniqueNum.push(arr[i])
+    }
+  } console.log(uniqueNum);
+  return uniqueNum
+}
+console.log(getUniqueNum(arr));
 // 3)
 // Создать функцию с именем isPalindrome
 // Проверить является ли строка палиндромом
