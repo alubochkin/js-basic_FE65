@@ -3,7 +3,7 @@
     Дана строка 'sOMe sTrING in lOWERcaSE'
     Создать строку вида 'SoMe sTrInG In lOwErCaSe'
 */
-
+///
 const str = "sOMe sTrING in lOWERcaSE";
 function replace(str) {
   let str2 = str.toLowerCase();
