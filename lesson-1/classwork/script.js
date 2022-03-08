@@ -50,7 +50,7 @@ function getBiggest(...args) {
 
 getBiggest(1, 3, 6, 4, 9);
 
-/* ??
+/* 
    Создать функцию с именем isAnagram
    Написать код функции проверки анаграммы
    isAnagram('пасечник','песчинка'); // true
@@ -58,12 +58,21 @@ getBiggest(1, 3, 6, 4, 9);
 */
 
 function isAnagram(str1, str2) {
-  str1 = "пасечник";
-  str2 = "песчинка";
-  let arrStr1 = str1.split("");
-  let arrStr2 = str2.split("");
+  if (str1.length !== str2.length) return false;
+
+  return (
+    str1
+      .split("")
+      .sort((a, b) => a - b)
+      .join("") ===
+    str2
+      .split("")
+      .sort((a, b) => a - b)
+      .join("")
+  );
 }
-isAnagram();
+
+console.log(isAnagram());
 
 /* 
     Создайте массив с десятью случайными элементами от 0 до 100;
