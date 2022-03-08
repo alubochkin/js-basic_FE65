@@ -118,30 +118,30 @@ const users = [{
     },
 ];
 
-const validation = (args) => {
-    let value;
-    value = prompt(`Введите ваше ${args}`);
-    while (!value) {
-        value = prompt(`Вы допустили ошибку в написании ${args}. Пожалуйста попробуйте снова`);
-    }
-    return value;
-}
+// const validation = (args) => {
+//     let value;
+//     value = prompt(`Введите ваше ${args}`);
+//     while (!value) {
+//         value = prompt(`Вы допустили ошибку в написании ${args}. Пожалуйста попробуйте снова`);
+//     }
+//     return value;
+// }
 
-const showInfo = (names) => {
-    alert(`
-    User name: ${names.username}
-    User email: ${names.email} 
-    `);
-}
+// const showInfo = (names) => {
+//     alert(`
+//     User name: ${names.username}
+//     User email: ${names.email} 
+//     `);
+// }
 
-const init = () => {
-    const names = validation('имя');
-    const user = users.find(i => names.toLocaleLowerCase() === i.name.toLocaleLowerCase())
-    if (user !== undefined) {
-        showInfo(user)
-    } else {
-        alert('user not found')
-    }
-}
+// const init = () => {
+//     const names = validation('имя');
+//     const user = users.find(i => names.toLocaleLowerCase() === i.name.toLocaleLowerCase())
+//     if (user !== undefined) {
+//         showInfo(user)
+//     } else {
+//         alert('user not found')
+//     }
+// }
 
-init();
+// init();
