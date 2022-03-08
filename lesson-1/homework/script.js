@@ -75,6 +75,7 @@ const users = [
     email: "Nathan@yesenia.net",
   },
 ];
+// здесь надо было все через ключи же? пробовала разными способами, но что-то все не то..
 
 let yourName = +prompt("Введите имя пользователя", "");
 getFun = (yourName) => {
