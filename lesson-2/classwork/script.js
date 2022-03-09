@@ -6,19 +6,32 @@
     когда a === b в console.log вывести, что таймер остановился
 
     решить через рекурсию
-*/
-
-/*
     1. timer(a , b)
     2. сравнить a, b если === return
     3. setTimeout(() => { timer(a + 1, b) }, 1000)
 */
+function timer(a, b) {
+  if (a === b) {
+    console.log("таймер остановился");
+    return;
+  }
+  setTimeout(() => {
+    console.log(a + 1);
+    timer(a + 1, b);
+  }, 1000);
+}
+// timer(0, 5);
 
 /*
    Создать функцию с именем compact
    Функция должна очищать массив от значений: false, undefined, "", 0, null.
 */
-
+const array = ["h", undefined, "e", null, "l", false, "l", 0, "", "o"];
+function compact(arr) {
+  const compactArr = array.filter((item) => Boolean(item));
+  console.log(compactArr);
+}
+compact(array);
 /*
     Создать объект user вида 
     {
@@ -37,7 +50,45 @@
 
     МЕТОДЫ ДОЛЖНЫ РАБОТАТЬ С this
 */
+const user = {
+  name: "Anna",
+  lastName: "Gruzd",
+  age: "24",
+  knowledge: [],
+  hobbies: [],
+  showInfo() {
+    console.log(`
+    User Info:
+    Name: ${this.name} ${this.lastName};
+    Age: ${this.age};
+    Knowledge: ${this.knowledge};
+    Hobbies: ${this.hobbies}.
+    `);
+  },
+  addKnowledge(...args) {
+    this.knowledge.push(...args);
+  },
+  addHobby(newHobby) {
+    this.hobbies.unshift(newHobby);
+  },
+  clearKnowledge() {
+    this.knowledge = [];
+  },
+  clearHobbies() {
+    this.hobbies = [];
+  },
+};
+user.addKnowledge("HTML", "CSS");
+user.addKnowledge("JavaScript");
 
+user.addHobby("books");
+user.addHobby("series");
+user.addHobby("coding");
+
+// user.clearHobbies();
+// user.clearKnowledge();
+
+user.showInfo();
 /*
     Дан объект users
     Реализовать методы:
