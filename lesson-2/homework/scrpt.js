@@ -1,16 +1,36 @@
-/*
-    Дан массив [1,2,3,1,2,3,5,4,6,7,3,2,1,2,3,5,3,3,1,2,3,4,1]
-    Создать массив из уникальных элементов
+// /*
+//     Дан массив [1,2,3,1,2,3,5,4,6,7,3,2,1,2,3,5,3,3,1,2,3,4,1]
+//     Создать массив из уникальных элементов
 
-    РЕШАТЬ ЧЕРЕЗ reduce
-*/
+//     РЕШАТЬ ЧЕРЕЗ reduce
+// */
+const arr = [1,2,3,1,2,3,5,4,6,7,3,2,1,2,3,5,3,3,1,2,3,4,1]
+let reducedArr = arr.reduce((total, cur) =>{
+  if(arr.indexOf(cur) === arr.lastIndexOf(cur)){
+    total.push(cur)
+    return total
+  } return total
+}, [])
+console.log(reducedArr);
+// /*  
+//     Создать функцию с именем fromStringToObj
+//     Функция должна примать строку и возвращать объект
+//     'a.b.c.d.e.f.g.h.i' => { a: { b: { c: { d: { e: { f: { g: { h: { i: {} } } } } } } } } };
+// */
+const string = 'a.b.c.d.e.f.g.h.i';
+const fromStringToObj = (str) =>{
+  let arr = str.split('.')
+  let newArr = arr.reduceRight((acc,cur) => {
+return {
+   
+  [cur]:acc
 
-/*  
-    Создать функцию с именем fromStringToObj
-    Функция должна примать строку и возвращать объект
-    'a.b.c.d.e.f.g.h.i' => { a: { b: { c: { d: { e: { f: { g: { h: { i: {} } } } } } } } } };
-*/
+}
+  }, {})
+return newArr
+}
 
+console.log(fromStringToObj(string));
 /*
     Реализовать CRUD для объекта todo
 
