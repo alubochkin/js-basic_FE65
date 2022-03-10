@@ -4,16 +4,16 @@
 //     b - финиш
 //     каждую секунду число a должно увеличиваться на 1 и выводиться в console.log
 //     когда a === b в console.log вывести, что таймер остановился
-const timer = (a,b) =>{
-    if(a === b){
-        console.log('таймер завершен');
-        return;
-    }
-    setTimeout(() =>{
-        console.log(a);
-        timer(a + 1, b)
-    }, 1000)
-}
+const timer = (a, b) => {
+  if (a === b) {
+    console.log("таймер завершен");
+    return;
+  }
+  setTimeout(() => {
+    console.log(a);
+    timer(a + 1, b);
+  }, 1000);
+};
 timer(1, 5);
 //     решить через рекурсию
 // */
@@ -28,12 +28,12 @@ timer(1, 5);
 //    Создать функцию с именем compact
 //    Функция должна очищать массив от значений: false, undefined, "", 0, null.
 // */
-const compact = (arr) =>{
-arr = arr.filter((item) => Boolean(item))
-return arr
-}
+const compact = (arr) => {
+  arr = arr.filter((item) => Boolean(item));
+  return arr;
+};
 // /*
-//     Создать объект user вида 
+//     Создать объект user вида
 //     {
 //         name: 'SomeName',
 //         lastName: 'SomeLastName',
@@ -51,6 +51,32 @@ return arr
 //     МЕТОДЫ ДОЛЖНЫ РАБОТАТЬ С this
 // */
 
+const user = {
+  name: "Mary",
+  lastName: "Zaiko",
+  age: "27",
+  knowledge: ["html", "css"],
+  hobbies: ["books", "serials"],
+  showInfo() {
+    console.log(
+      `My name ${this.name} ${this.lastName} and I'm ${this.age}. I know ${this.knowledge} and I like ${this.hobbies}.`
+    );
+  },
+  addKnowledge(newKnowledge) {
+    this.knowledge.push(newKnowledge);
+  },
+  addHobby(newHobby) {
+    this.hobbies.unshift(newHobby);
+  },
+  clearKnowledge() {
+    this.knowledge.splice(0, this.knowledge.length);
+  },
+  clearHobbies() {
+    this.hobbies.splice(0, this.hobbies.length);
+  },
+};
+
+console.log(user.clearKnowledge(), user.knowledge);
 /*
     Дан объект users
     Реализовать методы:
