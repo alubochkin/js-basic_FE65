@@ -1,25 +1,18 @@
 /* 1) Дана строка   'sOMe sTrING in lOWERcaSE'
 Создать строку вида 'SoMe sTrInG In lOwErCaSe'*/
 
-// const someString = "sOMe sTrING in lOWERcaSE";
+const string = "sOMe sTrING in lOWERcaSE";
 
-// function replace(string) {
-//   let str = string
-//     .toLowerCase()
-//     .split(" ")
-//     .map((item) => item.split(""));
-
-//   str.map((item, index) => {
-//     if (index % 2 === 0) {
-//       return item.map((item, index) => {
-//         index % 2 === 0 ? item.toUpperCase() : item;
-//       });
-//     }
-//   });
-
-//   console.log(str);
-// }
-// replace(someString);
+function changeRegister(string) {
+  let changedStr = "";
+  for (let i = 0; i < string.length; i++) {
+    i % 2 === 0
+      ? (changedStr += string[i].toUpperCase())
+      : (changedStr += string[i].toLowerCase());
+  }
+  console.log(changedStr);
+}
+changeRegister(string);
 
 /* 2) Дан массив [1,2,3,1,2,3,5,4,6,7,3,2,1,2,3,5,3,3,1,2,3,4,1]
 Создать массив из элементов которые встречаются только один раз*/
@@ -29,13 +22,10 @@ const testArr = [
 ];
 
 function sortArray(arr) {
-  const newArr = [];
-  arr.forEach((elem) => {
-    !newArr.includes(elem) ? newArr.push(elem) : elem;
-  });
-  console.log(testArr);
+  const newArr = arr.reduce((acc, cur) => {
+    return arr.indexOf(cur) !== arr.lastIndexOf(cur) ? acc : [...acc, cur];
+  }, []);
   console.log(newArr);
-  return newArr;
 }
 sortArray(testArr);
 
