@@ -8,6 +8,20 @@
     решить через рекурсию
 */
 
+timer = (a, b) => {
+  if (a === b) {
+    console.log("stop");
+    return;
+  }
+  setTimeout(() => {
+    console.log(a + 1);
+
+    timer(a + 1, b);
+  }, b);
+};
+
+timer(10, 40);
+
 /*
     1. timer(a , b)
     2. сравнить a, b если === return
@@ -18,6 +32,11 @@
    Создать функцию с именем compact
    Функция должна очищать массив от значений: false, undefined, "", 0, null.
 */
+
+let arr = [];
+const compact = (arr) => {
+  return arr.filter((el) => Boolean(el));
+};
 
 /*
     Создать объект user вида 
