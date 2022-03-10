@@ -7,7 +7,19 @@
 
     решить через рекурсию
 */
-
+function timer(a, b) {
+    if (a === b) {
+      console.log("Таймер остановился");
+      return;
+    }
+  
+    setTimeout(() => {
+      console.log(a);
+  
+      timer(a + 1, b);
+    }, 1000);
+  }
+  
 /*
     1. timer(a , b)
     2. сравнить a, b если === return
@@ -19,6 +31,12 @@
    Функция должна очищать массив от значений: false, undefined, "", 0, null.
 */
 
+function compact(arr) {
+    let a = arr.filter((item => Boolean(item)))
+    console.log(a)
+}
+
+compact([false, 2, 0, 54, undefined])
 /*
     Создать объект user вида 
     {
