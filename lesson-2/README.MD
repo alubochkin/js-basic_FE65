@@ -7,6 +7,7 @@
 5. [Копирование объекта и массивов](#Copy)
 6. [Методы объекта. this для объекта](#Methods)
 7. [Опциональная цепочка](#Chain)
+8. [Привязка контекста call/apply/bind](#Bind)
 
 ---
 
@@ -913,6 +914,129 @@ console.log(person?.[key]?.()); // Vlad Tarsov
 
 ---
 
+#### <a href="Bind"></a> Привязка контекста
+
+Потеря `this`
+
+```js
+const person = {
+  lastName: "Tarasov",
+  age: 28,
+  showInfo() {
+    return `${this.lastName} ${this.age}`;
+  },
+};
+
+console.log(person.showInfo()); // Tarasov 28
+
+const showPersonInfo = person.showInfo;
+console.log(showPersonInfo()); // undefined undefined
+```
+
+Методы `apply` и `call` позволяют задать контекст для выполняемой функции. Основная разница между `apply` и `cal`l в способе передачи параметров в функцию. Первый параметр обеих функций определяет контекст выполнения функции (то есть то, чему будет равен `this`).
+
+```js
+// Запись
+
+someFunc.call(context, arg1, arg2, arg3, argX);
+someFunc.apply(context, [arg1, arg2, arg3, argX]);
+```
+
+```js
+const showInfo = function () {
+  return `lastName: ${this.lastName}, age: ${this.age}`;
+};
+
+const person = {
+  lastName: "Tarasov",
+  age: 28,
+};
+
+console.log(showInfo()); // name: undefined, age: undefined
+console.log(showInfo.call(person)); // name: Vlad, age: 28
+console.log(showInfo.apply(person)); // name: Vlad, age: 28
+```
+
+```js
+const person = {
+  lastName: "Tarasov",
+  age: 28,
+};
+
+function sayHi(name) {
+  return `${this.lastName} говорит привет ${name}`;
+}
+
+console.log(sayHi()); // undefined говорит привет undefined
+console.log(sayHi.call(person, "Мише")); // Vlad говорит привет Мише
+console.log(sayHi.apply(person, ["Вите"])); // Vlad говорит привет Вите
+```
+
+Метод `bind`, который позволяет зафиксировать `this`.
+
+```js
+const person = {
+  lastName: "Tarasov",
+  age: 28,
+};
+
+function sayHi(name) {
+  return `${this.lastName} говорит привет ${name}`;
+}
+
+const boundSayHi = sayHi.bind(person);
+
+// some code
+
+console.log(boundSayHi("Пете"));
+```
+
+**bind(this) Зафиксировать контекст можно только один раз**
+
+```js
+const person = {
+  lastName: "Tarasov",
+  age: 28,
+};
+
+const person1 = {
+  lastName: "Some",
+  age: 12,
+};
+
+const person2 = {
+  lastName: "Any",
+  age: 43,
+};
+
+function sayHi(name) {
+  return `${this.lastName} говорит привет ${name}`;
+}
+
+let boundSayHi = sayHi.bind(person);
+boundSayHi.bind(person1);
+boundSayHi.bind(person2);
+
+// some code
+
+console.log(boundSayHi("Пете")); // Tarasov говорит привет Пете
+```
+
+С помощью `bind` можно привязывать не только `this`, но и аргументы
+
+```js
+const sum = (a, b, c, d) => {
+  return a + b + c + d;
+};
+
+const boundSum = sum.bind(null, 5, 5);
+
+console.log(boundSum(10, 10)); // 30
+console.log(boundSum(5, 5)); // 20
+```
+
+---
+
 ---
 
 ### ДЗ
@@ -924,3 +1048,5 @@ console.log(person?.[key]?.()); // Vlad Tarsov
 5. [Опциональная цепочка](https://learn.javascript.ru/optional-chaining)
 6. [Object.keys, values, entries](https://learn.javascript.ru/keys-values-entries)
 7. [Деструктуризация](https://learn.javascript.ru/destructuring-assignment)
+8. [call/apply](https://learn.javascript.ru/call-apply-decorators)
+9. [Привязка контекста к функции bind](https://learn.javascript.ru/bind)
