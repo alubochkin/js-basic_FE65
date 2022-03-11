@@ -29,8 +29,7 @@ timer(1, 5);
 //    Функция должна очищать массив от значений: false, undefined, "", 0, null.
 // */
 const compact = (arr) => {
-  arr = arr.filter((item) => Boolean(item));
-  return arr;
+   return arr.filter((item) => Boolean(item));
 };
 // /*
 //     Создать объект user вида
