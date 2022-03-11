@@ -8,17 +8,23 @@
 */
 
 const uniqueNumbers = (array) => {
-  return array.reduce((acc, curr) => {
-    if(array.indexOf(curr) === array.lastIndexOf(curr)) {
-      return [
-        ...acc,
-        curr
-      ]
-    } else {
-      return acc
-    }
-  }, [])
+  const res = array.reduce((acc, curr) => ({...acc, [curr]: curr}), {})
+  return Object.values(res)
 }
+
+
+// const uniqueNumbers = (array) => {
+//   return array.reduce((acc, curr) => {
+//     if(array.indexOf(curr) === array.lastIndexOf(curr)) {
+//       return [
+//         ...acc,
+//         curr
+//       ]
+//     } else {
+//       return acc
+//     }
+//   }, [])
+// }
 
 // const uniqueNumbers = (array) => {
 //   const result = []
