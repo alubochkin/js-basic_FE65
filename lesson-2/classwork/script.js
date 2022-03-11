@@ -57,13 +57,14 @@ const user = {
   knowledge: [],
   hobbies: [],
   showInfo() {
+    console.group(`User ${this.name} info:`);
     console.log(`
-    User Info:
     Name: ${this.name} ${this.lastName};
     Age: ${this.age};
     Knowledge: ${this.knowledge};
     Hobbies: ${this.hobbies}.
     `);
+    console.groupEnd();
   },
   addKnowledge(...args) {
     this.knowledge.push(...args);
@@ -109,10 +110,14 @@ const users = {
     { id: 2, name: "Victor" },
     { id: 3, name: "Kate" },
   ],
-  findById(id) {},
+  findById(id) {
+    return console.log(this.list[id]);
+  },
   findByName(name) {},
   filterById(id) {},
   filterByName(name) {},
   getAllNames() {},
   getAllIds() {},
 };
+
+users.findById(0);
