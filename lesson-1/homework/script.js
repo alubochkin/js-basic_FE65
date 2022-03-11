@@ -21,13 +21,19 @@ const testArr = [
   1, 2, 3, 1, 2, 3, 5, 4, 6, 7, 3, 2, 1, 2, 3, 5, 3, 3, 1, 2, 3, 4, 1,
 ];
 
+// function sortArray(arr) {
+//   const newArr = arr.reduce((acc, cur) => {
+//     return arr.indexOf(cur) !== arr.lastIndexOf(cur) ? acc : [...acc, cur];
+//   }, []);
+//   return newArr;
+// }
 function sortArray(arr) {
-  const newArr = arr.reduce((acc, cur) => {
-    return arr.indexOf(cur) !== arr.lastIndexOf(cur) ? acc : [...acc, cur];
-  }, []);
-  console.log(newArr);
+  const newArr = arr.filter((elem) => {
+    return arr.indexOf(elem) == arr.lastIndexOf(elem);
+  });
+  return newArr;
 }
-sortArray(testArr);
+console.log(sortArray(testArr));
 
 /* 3) Создать функцию с именем isPalindrome
 Проверить является ли строка палиндромом
