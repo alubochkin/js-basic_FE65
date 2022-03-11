@@ -1,8 +1,5 @@
-<<<<<<< HEAD
 //-----------------------------------------------------------------------------------
 
-=======
->>>>>>> 65436fc214abe4580e6e6b69cc9baeca60c046e9
 /*
     Дан массив [1,2,3,1,2,3,5,4,6,7,3,2,1,2,3,5,3,3,1,2,3,4,1]
     Создать массив из уникальных элементов
@@ -10,7 +7,6 @@
     РЕШАТЬ ЧЕРЕЗ reduce
 */
 
-<<<<<<< HEAD
 const uniqueNumbers = (array) => {
   return array.reduce((acc, curr) => {
     if(array.indexOf(curr) === array.lastIndexOf(curr)) {
@@ -38,15 +34,12 @@ console.log(uniqueNumbers([1,2,3,1,2,3,5,4,6,7,3,2,1,2,3,5,3,3,1,2,3,4,1]))
 
 //-----------------------------------------------------------------------------------
 
-=======
->>>>>>> 65436fc214abe4580e6e6b69cc9baeca60c046e9
 /*  
     Создать функцию с именем fromStringToObj
     Функция должна примать строку и возвращать объект
     'a.b.c.d.e.f.g.h.i' => { a: { b: { c: { d: { e: { f: { g: { h: { i: {} } } } } } } } } };
 */
 
-<<<<<<< HEAD
 // const fromStringToObj = (string) => {
 //   return string
 //     .split('.')
@@ -67,8 +60,6 @@ console.log(fromStringToObj('a.b.c.d.e.f.g.h.i'))
 
 //-----------------------------------------------------------------------------------
 
-=======
->>>>>>> 65436fc214abe4580e6e6b69cc9baeca60c046e9
 /*
     Реализовать CRUD для объекта todo
 
@@ -81,7 +72,6 @@ console.log(fromStringToObj('a.b.c.d.e.f.g.h.i'))
 
 const generateId = (x = 999) => Math.random() * x;
 
-<<<<<<< HEAD
 // const testTodo = {
 //   id: generateId(),
 //   title: "Название задания",
@@ -112,19 +102,3 @@ const todo = {
 };
 
 //-----------------------------------------------------------------------------------
-=======
-const testTodo = {
-  id: generateId(),
-  title: "Название задания",
-  description: null,
-  completed: false,
-};
-
-const todo = {
-  list: [testTodo],
-  getTodo(id) {},
-  createTodo(title, description) {},
-  updateTodo(id, newTodo) {},
-  deleteTodo(id) {},
-};
->>>>>>> 65436fc214abe4580e6e6b69cc9baeca60c046e9
