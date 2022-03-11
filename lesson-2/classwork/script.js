@@ -1,5 +1,8 @@
+<<<<<<< HEAD
 //-----------------------------------------------------------------------------------
 
+=======
+>>>>>>> 65436fc214abe4580e6e6b69cc9baeca60c046e9
 /*
     Создать функцию timer(a, b)
     a - начало
@@ -10,6 +13,7 @@
     решить через рекурсию
 */
 
+<<<<<<< HEAD
 const timer = (a, b) => {
     if(a === b) return
     setTimeout(() => {
@@ -18,19 +22,25 @@ const timer = (a, b) => {
     },1000)
 }
 
+=======
+>>>>>>> 65436fc214abe4580e6e6b69cc9baeca60c046e9
 /*
     1. timer(a , b)
     2. сравнить a, b если === return
     3. setTimeout(() => { timer(a + 1, b) }, 1000)
 */
 
+<<<<<<< HEAD
 //-----------------------------------------------------------------------------------
 
+=======
+>>>>>>> 65436fc214abe4580e6e6b69cc9baeca60c046e9
 /*
    Создать функцию с именем compact
    Функция должна очищать массив от значений: false, undefined, "", 0, null.
 */
 
+<<<<<<< HEAD
 const compact = (array) => {
     const res = array.filter(item => Boolean(item))
     return res
@@ -38,6 +48,8 @@ const compact = (array) => {
 
 //-----------------------------------------------------------------------------------
 
+=======
+>>>>>>> 65436fc214abe4580e6e6b69cc9baeca60c046e9
 /*
     Создать объект user вида 
     {
@@ -57,6 +69,7 @@ const compact = (array) => {
     МЕТОДЫ ДОЛЖНЫ РАБОТАТЬ С this
 */
 
+<<<<<<< HEAD
 const user = {
     name: 'SomeName',
     lastName: 'SomeLastName',
@@ -88,6 +101,8 @@ const user = {
 
 //-----------------------------------------------------------------------------------
 
+=======
+>>>>>>> 65436fc214abe4580e6e6b69cc9baeca60c046e9
 /*
     Дан объект users
     Реализовать методы:
@@ -108,6 +123,7 @@ const users = {
     { id: 2, name: "Victor" },
     { id: 3, name: "Kate" },
   ],
+<<<<<<< HEAD
   findById(id) {
       return this.list.find(item => item.id === id)
   },
@@ -135,3 +151,12 @@ const users = {
 };
 
 //-----------------------------------------------------------------------------------
+=======
+  findById(id) {},
+  findByName(name) {},
+  filterById(id) {},
+  filterByName(name) {},
+  getAllNames() {},
+  getAllIds() {},
+};
+>>>>>>> 65436fc214abe4580e6e6b69cc9baeca60c046e9
