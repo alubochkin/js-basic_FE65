@@ -111,13 +111,28 @@ const users = {
     { id: 3, name: "Kate" },
   ],
   findById(id) {
-    return console.log(this.list[id]);
+    return this.list.find((elem) => elem.id === id);
   },
-  findByName(name) {},
-  filterById(id) {},
-  filterByName(name) {},
-  getAllNames() {},
-  getAllIds() {},
+  findByName(name) {
+    return this.list.find((elem) => elem.name === name);
+  },
+  filterById(id) {
+    return (this.list = this.list.filter((elem) => elem.id !== id));
+  },
+  filterByName(name) {
+    return (this.list = this.list.filter((elem) => elem.name !== name));
+  },
+  getAllNames() {
+    return this.list.reduce((acc, cur) => [...acc, cur.name], []);
+  },
+  getAllIds() {
+    return this.list.reduce((acc, cur) => [...acc, cur.id], []);
+  },
 };
 
-users.findById(0);
+console.log(users.findById(2));
+console.log(users.findByName("Kate"));
+console.log(users.filterById(1));
+console.log(users.filterByName("Vlad"));
+console.log(users.getAllNames());
+console.log(users.getAllIds());
