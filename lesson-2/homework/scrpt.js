@@ -4,13 +4,29 @@
 
     РЕШАТЬ ЧЕРЕЗ reduce
 */
+const arr = [
+  1, 2, 3, 1, 2, 3, 5, 4, 6, 7, 3, 2, 1, 2, 3, 5, 3, 3, 1, 2, 3, 4, 1,
+];
+const filterArr = (arr) => {
+  const uniqueValues = arr.reduce((acc, cur) => {
+    return arr.indexOf(cur) !== arr.lastIndexOf(cur) ? acc : [...acc, cur];
+  }, []);
+  console.log(uniqueValues);
+};
+filterArr(arr);
 
 /*  
     Создать функцию с именем fromStringToObj
     Функция должна примать строку и возвращать объект
     'a.b.c.d.e.f.g.h.i' => { a: { b: { c: { d: { e: { f: { g: { h: { i: {} } } } } } } } } };
 */
-
+const fromStringToObj = (str) => {
+  const obj = str.split(".").reduceRight((acc, cur) => {
+    return { [cur]: acc };
+  }, {});
+  console.log(obj);
+};
+fromStringToObj("a.b.c.d.e.f.g.h.i");
 /*
     Реализовать CRUD для объекта todo
 
