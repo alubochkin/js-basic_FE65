@@ -75,6 +75,7 @@ const todo = {
             if (person.id === id) {
                 return newTodo
             }
+            return person
         })
         return this.list
     },
@@ -86,3 +87,6 @@ const todo = {
 console.log(todo.getTodo(1234));
 console.log(todo.createTodo('newTodo', 'asdf'));
 console.log(todo.updateTodo(1234, { id: 826 }));
+console.log(todo.updateTodo(826, { id: 827 }));
+console.log(todo.updateTodo(1234, { id: 828 }));
+console.log(todo.updateTodo(1234, { id: 823 }));

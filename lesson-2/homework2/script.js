@@ -38,16 +38,21 @@ const obj = {
 }
 const path = 'a.b.c'
 const path2 = 'x.y.z'
+const path3 = 'd.e.f'
 const get = (obj, path) => {
     const result = path.split('.')
     return result.reduce((acc, cur) => {
-        acc = acc[cur]
+        if (typeof acc === 'object') {
+            acc = acc[cur]
+        } else {
+            acc = undefined
+        }
         return acc
     }, obj)
 }
 console.log(get(obj, path2));
 console.log(get(obj, path));
-
+console.log(get(obj, path3));
 
 
 
