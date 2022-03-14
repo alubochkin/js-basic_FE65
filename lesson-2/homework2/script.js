@@ -4,17 +4,9 @@
     * решить через рекурсию
 
     const obj = {
-        a: {
-            b: {
-                c: '1'
-            }
-        },
-        x: {
-            y: {
-                z: '2'
-            }
-        }
-    }
+      a: { b: { c: "1" } },
+      x: { y: { z: "2" } },
+    };
 
     get(obj, 'a.b.c') // 1
     get(obj, 'a.b') // { c: '1' }
@@ -22,23 +14,21 @@
     get(obj, 'x.b.z') // undefined
 */
 const obj = {
-  a: {
-    b: {
-      c: "1",
-    },
-  },
-  x: {
-    y: {
-      z: "2",
-    },
-  },
+  a: { b: { c: "1" } },
+  x: { y: { z: "2" } },
 };
-function get(obj, path) {
-  let sp = path.split(".");
-  console.log(sp);
-}
-get(obj, "a.b.c");
 
+function get(obj, path) {
+  return path.split(".").reduce((acc, cur) => {
+    typeof acc !== "object" ? (acc = undefined) : (acc = acc[cur]);
+    return acc;
+  }, obj);
+}
+
+console.log(get(obj, "a.b.c")); // 1
+console.log(get(obj, "a.b")); // { c: '1' }
+console.log(get(obj, "x.y.z")); // 2
+console.log(get(obj, "x.b.z")); // undefined
 /*
     Функция, которая будет переворачивать число
 
