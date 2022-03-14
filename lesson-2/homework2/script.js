@@ -36,9 +36,9 @@ const obj = {
   },
 };
 
-//function get(obj, prop) {
-//const key ;
-//};
+/*function get(obj, prop) {
+const key ;
+};*/
 
 /*
     Функция, которая будет переворачивать число

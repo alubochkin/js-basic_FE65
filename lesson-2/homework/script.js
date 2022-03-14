@@ -10,9 +10,18 @@ let startArr = [
 ];
 
 const unique = (arr) => {
+<<<<<<< HEAD
   const uniqueArr = arr.reduce((acc, item) => ({ ...acc, [item]: item }), {});
 
   const result = Object.values(uniqueArr);
+=======
+  const uniqueArr = arr.reduce((acc, item, index, array) => {
+    if ((acc[item] = true)) {
+      return acc;
+    }
+  }, {});
+  const result = Object.keys(uniqueArr).filter((item) => Number(item));
+>>>>>>> b65733e6cbd93f2e5f8d4a0e56df6c96c0984b47
 
   return result;
 };
@@ -32,7 +41,11 @@ const fromStringToObj = (str) => {
   return obj;
 };
 
+<<<<<<< HEAD
 //console.log();
+=======
+console.log(fromStringToObj);
+>>>>>>> b65733e6cbd93f2e5f8d4a0e56df6c96c0984b47
 
 /*
     Реализовать CRUD для объекта todo
@@ -55,6 +68,7 @@ const testTodo = {
 
 const todo = {
   list: [testTodo],
+<<<<<<< HEAD
   getTodo(id) {
     return this.list.find((el) => el.id === id);
   },
@@ -75,3 +89,10 @@ const todo = {
   },
 };
 //console.log ();
+=======
+  getTodo(id) {},
+  createTodo(title, description) {},
+  updateTodo(id, newTodo) {},
+  deleteTodo(id) {},
+};
+>>>>>>> b65733e6cbd93f2e5f8d4a0e56df6c96c0984b47

@@ -17,10 +17,17 @@ timer = (a, b) => {
     console.log(a + 1);
 
     timer(a + 1, b);
+<<<<<<< HEAD
   }, 1000);
 };
 
 timer(1, 40);
+=======
+  }, b);
+};
+
+timer(10, 40);
+>>>>>>> b65733e6cbd93f2e5f8d4a0e56df6c96c0984b47
 
 /*
     1. timer(a , b)
