@@ -7,6 +7,14 @@
 
     решить через рекурсию
 */
+function timer (a, b) {
+    if(a === b) return
+    setTimeout(() => {
+        console.log(a);
+        timer(a +1, b);
+    }, 1000) 
+}
+timer(1,10)
 
 /*
     1. timer(a , b)
@@ -18,7 +26,16 @@
    Создать функцию с именем compact
    Функция должна очищать массив от значений: false, undefined, "", 0, null.
 */
-
+const compact = (arr) => {
+    const result = []
+    arr.forEach(item => {
+        if(Boolean(item)){
+            result.push(item)
+        }
+    });
+    return result
+}
+console.log(compact([false, undefined, "", 0, null]))
 /*
     Создать объект user вида 
     {
@@ -37,6 +54,39 @@
 
     МЕТОДЫ ДОЛЖНЫ РАБОТАТЬ С this
 */
+const user =   {
+    name: 'SomeName',
+    lastName: 'SomeLastName',
+    age: 'SomeAge',
+    knowledge: ['a', 'b', 'c'],
+    hobbies: ['1','2','3'],
+
+    showInfo() {
+        console.log(`
+            ${this.name} 
+            ${this.lastName} 
+            ${this.age}`
+        );
+    },
+    addKnowledge(newKnowledge) {
+        this.knowledge.push(newKnowledge);
+    },
+    addHobby(newHobby) {
+        this.hobbies.unshift(newHobby);
+    },
+    clearKnowledge() {
+        this.knowledge = []
+    },
+    clearHobbies() {
+        this.clearHobbies = []
+    }
+}
+
+user.showInfo()
+user.addKnowledge('d')
+console.log(user.knowledge)
+user.addHobby('0')
+console.log(user.hobbies);
 
 /*
     Дан объект users
@@ -58,10 +108,37 @@ const users = {
     { id: 2, name: "Victor" },
     { id: 3, name: "Kate" },
   ],
-  findById(id) {},
-  findByName(name) {},
-  filterById(id) {},
-  filterByName(name) {},
-  getAllNames() {},
-  getAllIds() {},
+  findById(id) {
+    return this.list.find(item => item.id === id)
+  },
+  findByName(name) {
+    return this.list.find(item => item.name === name)
+  },
+  filterById(id) {
+    // this.list = this.list.filter(item => item.id !== id);
+    let x = this.list.findIndex(item => item.id === id)
+    this.list.splice(x, 1)
+  },
+  filterByName(name) {
+    this.list = this.list.filter(item => item.name !== name);
+  },
+  getAllNames() {
+      let res = [];
+      this.list.forEach(item => {
+          res.push(item.name) 
+      })
+      return res
+  },
+  getAllIds() {
+      return this.list.map(item => item.id)
+  },
 };
+console.log(users.findById(1))
+console.log(users.findByName("Kate"));
+users.findByName(2)
+// console.log(users.list);
+users.filterById(2)
+console.log(users.list);
+console.log(users.getAllNames());
+console.log(users.getAllIds());
+

@@ -5,6 +5,9 @@
     РЕШАТЬ ЧЕРЕЗ reduce
 */
 
+const array = [1,2,3,1,2,3,5,4,6,7,3,2,1,2,3,5,3,3,1,2,3,4,1]
+const res = array.reduce((acc,cur) => ({...acc, [cur] : cur}), {})
+console.log(Object.values(res));
 /*  
     Создать функцию с именем fromStringToObj
     Функция должна примать строку и возвращать объект

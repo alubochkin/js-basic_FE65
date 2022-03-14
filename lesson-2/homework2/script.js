@@ -25,10 +25,13 @@
 
 /*
     Функция, которая будет переворачивать число
-
     reverseInt(15) === 51
     reverseInt(500) === 5
 */
+const rev = (num) => {
+    return Number(String(num).split('').reverse().join(''))
+}
+console.log(rev(51));
 
 /* 
     Напишите Функции, которая возвращает новый массив из общих элементов двух массивов
@@ -38,7 +41,11 @@
 
     getCommonElements(a, b); //[1,3,4]
 */
-
+const getCommonElements = (arr1, arr2) => {
+    const newArray = arr1.filter((item) => arr2(item))
+    return newArray
+}
+console.log(getCommonElements([1,2,3,4,5],[1,3,6,3,1,4,7]));
 /* 
     Напишите функцию которая работает таким образом
 
@@ -53,3 +60,4 @@
     add(1,2)  //3
     add(2)(4) //6
 */
+
