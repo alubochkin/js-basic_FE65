@@ -44,9 +44,28 @@ const testTodo = {
 };
 
 const todo = {
-  list: [testTodo],
-  getTodo(id) {},
-  createTodo(title, description) {},
-  updateTodo(id, newTodo) {},
-  deleteTodo(id) {},
+  list: [],
+  getTodo(id) {
+    return this.list.find(item => id === item.id)
+  },
+  createTodo(title, description) {
+    this.list.push({
+      id: generateId(),
+      title: `${title}`,
+      description: `${description}`,
+    })
+  },
+  updateTodo(id, newTodo) {
+    const todoIndex = this.list.findIndex(item => id === item.id)
+    this.list.splice(todoIndex, 1, newTodo)
+  },
+  deleteTodo(id) {
+    this.list = this.list.filter(item => id !== item.id)
+  },
 };
+
+todo.createTodo('помыть посуду', 'вечером')
+todo.createTodo('вынести мусор', 'утром')
+todo.createTodo('приготовить ужин', 'вечером')
+todo.createTodo('сделать дз', 'в обед')
+console.log(todo.list)
