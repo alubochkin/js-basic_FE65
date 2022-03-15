@@ -1,0 +1,54 @@
+.container {
+  width: 500px;
+  margin: 24px auto;
+}
+
+.counter {
+  max-width: 200px;
+  margin: auto;
+  background-color: cadetblue;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.counter > .count {
+  margin: 0;
+  padding: 12px;
+  color: white;
+  text-align: center;
+  font-size: 64px;
+  font-weight: bold;
+}
+
+#actions {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+#actions > button {
+  flex: 1;
+  padding: 24px 12px;
+  font-size: 32px;
+  border: none;
+  cursor: pointer;
+  color: white;
+  border: 1px solid transparent;
+}
+
+#actions > button:hover {
+  border: 1px solid #999;
+}
+
+.plus {
+  background-color: green;
+}
+
+.reset {
+  background-color: yellow;
+}
+
+.minus {
+  background-color: red;
+}
