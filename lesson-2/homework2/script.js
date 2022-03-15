@@ -36,21 +36,39 @@ const obj = {
     }
 }
 
+// const get = (obj, puth) => {
+//     let splitedPuth = puth.split('.')
+//     let result = obj
+//     for(let i = 0; i < splitedPuth.length; i++) {
+//         if(splitedPuth[i] in result) {
+//             result = result[splitedPuth[i]]
+//         } else {
+//             result = 'Значение не найдено...'
+//             break
+//         }
+//     }
+//     console.log(result)
+// }
+
+// get(obj, 'a.b.c')
+
 const get = (obj, puth) => {
     let splitedPuth = puth.split('.')
     let result = obj
-    for(let i = 0; i < splitedPuth.length; i++) {
-        if(splitedPuth[i] in result) {
-            result = result[splitedPuth[i]]
+    while(splitedPuth.length) {
+        let key = splitedPuth[0]
+        splitedPuth.splice(0,1) 
+
+        if(result[key]) {
+            result = result[key]
         } else {
-            result = 'Значение не найдено...'
-            break
+            result = undefined
         }
     }
-    console.log(result)
+    return result
 }
 
-get(obj, 'a.b.c')
+console.log(get(obj, 'a.b.c'))
 
 /*
     Функция, которая будет переворачивать число
