@@ -1,0 +1,19 @@
+.title {
+  font-size: 32px;
+}
+
+.title_red {
+  color: red;
+}
+
+.title_green {
+  color: green;
+}
+
+.content {
+  font-size: 28px;
+}
+
+.content_blue {
+  color: blue;
+}
