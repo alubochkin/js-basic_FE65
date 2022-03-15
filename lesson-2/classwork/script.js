@@ -120,6 +120,7 @@ const users = {
       return acc;
     }, []);
     console.log(allNames);
+    // this.list.map(item => item.name)
   },
   getAllIds() {
     let allId = this.list.reduce((acc, cur) => {

@@ -60,9 +60,9 @@ const todo = {
     let task = this.list.find((item) => item.id === id);
    console.log(task);
   },
-  createTodo(id, title, description) {
+  createTodo(title, description) {
     let task = { ...testTodo };
-    task.id = id
+    task.id = Math.random();
     task.title = title;
     task.description = description;
     this.list.push(task);
