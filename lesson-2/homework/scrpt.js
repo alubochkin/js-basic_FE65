@@ -8,10 +8,8 @@ const arr = [
   1, 2, 3, 1, 2, 3, 5, 4, 6, 7, 3, 2, 1, 2, 3, 5, 3, 3, 1, 2, 3, 4, 1,
 ];
 const filterArr = (arr) => {
-  const uniqueValues = arr.reduce((acc, cur) => {
-    return arr.indexOf(cur) !== arr.lastIndexOf(cur) ? acc : [...acc, cur];
-  }, []);
-  console.log(uniqueValues);
+  const res = arr.reduce((acc, cur) => ({ ...acc, [cur]: cur }), {});
+  console.log(Object.values(res));
 };
 filterArr(arr);
 
@@ -41,15 +39,41 @@ const generateId = (x = 999) => Math.random() * x;
 
 const testTodo = {
   id: generateId(),
-  title: "Название задания",
+  title: "Hola!",
   description: null,
+  completed: false,
+};
+const newTodo = {
+  id: generateId(),
+  title: "Buongiorno!",
+  description: "greet",
   completed: false,
 };
 
 const todo = {
   list: [testTodo],
-  getTodo(id) {},
-  createTodo(title, description) {},
-  updateTodo(id, newTodo) {},
-  deleteTodo(id) {},
+  getTodo(id) {
+    return this.list.find((elem) => elem.id === id);
+  },
+  createTodo(title, description) {
+    this.list.push({
+      id: generateId(),
+      title: `${title}`,
+      description: `${description}`,
+      completed: false,
+    });
+    console.log(this.list);
+  },
+  updateTodo(id, newTodo) {
+    let tdIndex = this.list.findIndex((elem) => elem.id === id);
+    this.list.splice(tdIndex, 1, newTodo);
+  },
+  deleteTodo(id) {
+    this.list = this.list.filter((elem) => elem.id !== id);
+  },
 };
+
+todo.getTodo(testTodo.id);
+todo.createTodo("Hello", "greet");
+todo.updateTodo(testTodo.id, newTodo);
+todo.deleteTodo(testTodo.id);
