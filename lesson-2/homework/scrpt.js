@@ -71,11 +71,11 @@ const todo = {
         return newElem
     },
     updateTodo(id, newTodo) {
-        this.list = this.list.map(person => {
-            if (person.id === id) {
-                return newTodo
+        this.list = this.list.map(todo => {
+            if (todo.id === id) {
+                return {...todo, ...newTodo }
             }
-            return person
+            return todo
         })
         return this.list
     },
