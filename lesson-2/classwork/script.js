@@ -8,16 +8,30 @@
     решить через рекурсию
 */
 
-/*
-    1. timer(a , b)
-    2. сравнить a, b если === return
-    3. setTimeout(() => { timer(a + 1, b) }, 1000)
-*/
+function timer(a, b) {
+  if (a === b) {
+    console.log("Граничный случай");
+    return;
+  }
+
+  setTimeout(() => {
+    console.log(a);
+
+    timer(a + 1, b);
+  }, b);
+}
+
+timer(4, 10);
 
 /*
    Создать функцию с именем compact
    Функция должна очищать массив от значений: false, undefined, "", 0, null.
 */
+
+const compact = (array) => {
+  const res = array.filter((item) => Boolean(item));
+  return res;
+};
 
 /*
     Создать объект user вида 
@@ -37,6 +51,35 @@
 
     МЕТОДЫ ДОЛЖНЫ РАБОТАТЬ С this
 */
+
+const user = {
+  name: "SomeName",
+  lastName: "SomeLastName",
+  age: "SomeAge",
+  knowledge: [],
+  hobbies: [],
+  showInfo() {
+    return `
+      name: ${this.name}
+      lastName: ${this.lastName}
+      age: ${this.age}
+      knowledge: ${this.knowledge.length > 0 ? this.knowledge : "нет знаний"}
+      hobbies: ${this.hobbies.length > 0 ? this.hobbies : "нет хобби"}
+      `;
+  },
+  addKnowledge(newKnowledge) {
+    this.knowledge.push(newKnowledge);
+  },
+  addHobby(newHobby) {
+    this.hobbies.unshift(newHobby);
+  },
+  clearKnowledge() {
+    this.knowledge = [];
+  },
+  clearHobbies() {
+    this.hobbies = [];
+  },
+};
 
 /*
     Дан объект users
@@ -58,10 +101,23 @@ const users = {
     { id: 2, name: "Victor" },
     { id: 3, name: "Kate" },
   ],
-  findById(id) {},
-  findByName(name) {},
-  filterById(id) {},
-  filterByName(name) {},
-  getAllNames() {},
-  getAllIds() {},
+
+  findById(id) {
+    return this.list.find((item) => item.id === id);
+  },
+  findByName(name) {
+    return this.list.find((item) => item.name === name);
+  },
+  filterById(id) {
+    this.list = this.list.filter((item) => item.id !== id);
+  },
+  filterByName(name) {
+    this.list = this.list.filter((item) => item.name !== name);
+  },
+  getAllNames() {
+    return this.list.reduce((acc, curr) => [...acc, curr.name], []);
+  },
+  getAllIds() {
+    return this.list.reduce((acc, curr) => [...acc, curr.id], []);
+  },
 };

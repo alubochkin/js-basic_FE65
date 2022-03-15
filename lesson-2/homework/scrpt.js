@@ -5,13 +5,33 @@
     РЕШАТЬ ЧЕРЕЗ reduce
 */
 
+const arr = [
+  1, 2, 3, 1, 2, 3, 5, 4, 6, 7, 3, 2, 1, 2, 3, 5, 3, 3, 1, 2, 3, 4, 1,
+];
+
+let res = arr.reduce((total, cur) => ({ ...total, [cur]: cur }), {});
+console.log(Object.values(res));
+
 /*  
     Создать функцию с именем fromStringToObj
     Функция должна примать строку и возвращать объект
     'a.b.c.d.e.f.g.h.i' => { a: { b: { c: { d: { e: { f: { g: { h: { i: {} } } } } } } } } };
 */
 
-/*
+const string = "a.b.c.d.e.f.g.h.i";
+const fromStringToObj = (str) => {
+  let arr = str.split(".");
+  let newArr = arr.reduceRight((acc, cur) => {
+    return {
+      [cur]: acc,
+    };
+  }, {});
+  return newArr;
+};
+
+console.log(fromStringToObj(string));
+
+/* ?
     Реализовать CRUD для объекта todo
 
     в объекте todo есть поле list в котором должны храниться наши задания
