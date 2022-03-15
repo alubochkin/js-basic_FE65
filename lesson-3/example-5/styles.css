@@ -1,0 +1,14 @@
+body {
+  width: 400px;
+  margin: auto;
+}
+
+.border {
+  width: 100%;
+  margin: 16px;
+  padding: 8px;
+  border: 1px solid #333;
+  text-transform: uppercase;
+  display: flex;
+  flex-wrap: wrap;
+}
