@@ -76,6 +76,7 @@ const user = {
 };
 
 console.log(user.clearKnowledge(), user.knowledge);
+
 /*
     Дан объект users
     Реализовать методы:
@@ -96,10 +97,43 @@ const users = {
     { id: 2, name: "Victor" },
     { id: 3, name: "Kate" },
   ],
-  findById(id) {},
-  findByName(name) {},
-  filterById(id) {},
-  filterByName(name) {},
-  getAllNames() {},
-  getAllIds() {},
+  findById(id) {
+    let user = this.list.find((item) => item.id === id);
+    console.log(user);
+  },
+  findByName(name) {
+    let user = this.list.find((item) => item.name === name);
+    console.log(user);
+  },
+  filterById(id) {
+    let filterUsers = this.list.filter((item) => item.id !== id);
+    console.log(filterUsers);
+  },
+  filterByName(name) {
+    let filterUsers = this.list.filter((item) => item.name !== name);
+    console.log(filterUsers);
+  },
+  getAllNames() {
+    let allNames = this.list.reduce((acc, cur) => {
+      
+      acc.push(cur.name);
+      return acc;
+    }, []);
+    console.log(allNames);
+  },
+  getAllIds() {
+    let allId = this.list.reduce((acc, cur) => {
+      
+      acc.push(cur.id);
+      return acc;
+    }, []);
+    console.log(allId);
+  },
+  
 };
+users.findById(2)
+users.findByName('Vova')
+users.filterById(1)
+users.filterByName('Vova')
+users.getAllNames()
+users.getAllIds()
