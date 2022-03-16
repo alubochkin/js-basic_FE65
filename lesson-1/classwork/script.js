@@ -75,4 +75,4 @@ function replacer () {
       
       return d
 } 
-console.log(replacer())
+
