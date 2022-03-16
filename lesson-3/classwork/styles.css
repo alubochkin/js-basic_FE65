@@ -3,3 +3,14 @@ button {
   font-size: 18px;
   border: none;
 }
+.title {
+  width: 30px;
+  height: 30px;
+  background-color: yellow;
+}
+
+.list {
+  width: 30px;
+  height: 80px;
+  background-color: yellow;
+}
