@@ -14,7 +14,21 @@
     Добавите этот класс к элементу ul
     Добавьте элемент ul перед h3
 */
+const title = document.createElement("h3");
+title.textContent = "Hello, World!";
+title.classList.add("title");
+document.body.append(title);
 
+const text = document.createElement("p");
+text.textContent =
+  "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam, totam!";
+text.classList.add("text");
+document.body.append(text);
+
+const list = document.createElement("ul");
+list.innerHTML = `<li>hello</li> <li>hello 2</li> <li>hello 3</li>`;
+list.classList.add("list");
+document.body.prepend(list);
 /*
     Создать кнопку
     При каждом нажатии кнопки она должна менять цвет
@@ -24,13 +38,27 @@
 function getRandom(min, max) {
   return Math.floor(Math.random() * (max - min) + min);
 }
-
 const colors = ["#2656a3", "#611b94", "#9c1c7e", "#3f8a17", "#a31c1c"];
+
+const btn = document.createElement("button");
+btn.textContent = "Click Me!";
+btn.classList.add("btn");
+document.body.append(btn);
+
+btn.onclick = () => {
+  btn.style.backgroundColor = colors[getRandom(0, colors.length)];
+};
 
 /*
     Создать параграф
     Класть в него информацию о положении курсора мыши Y:X
 */
+const p = document.createElement("p");
+p.classList.add("p");
+document.body.append(p);
+document.body.onmousemove = (event) => {
+  p.textContent = `${event.pageX}:${event.pageY}`;
+};
 
 /*
     Создать параграф с рандомным текстом
@@ -39,3 +67,15 @@ const colors = ["#2656a3", "#611b94", "#9c1c7e", "#3f8a17", "#a31c1c"];
 
     Нужно чтобы context menu по умолчанию не открывался
 */
+const paragraph = document.createElement("p");
+paragraph.classList.add("p");
+document.body.append(paragraph);
+paragraph.textContent = "Random Text";
+paragraph.style.fontSize = "18px";
+let fz = parseInt(paragraph.style.fontSize);
+
+paragraph.onmousedown = (event) => {
+  event.which === 1
+    ? (paragraph.style.fontSize = `${fz + 2}px`)
+    : (paragraph.style.fontSize = `${fz - 2}px`);
+};
