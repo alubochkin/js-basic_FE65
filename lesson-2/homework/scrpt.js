@@ -13,6 +13,15 @@ console.log(Object.values(res));
     Функция должна примать строку и возвращать объект
     'a.b.c.d.e.f.g.h.i' => { a: { b: { c: { d: { e: { f: { g: { h: { i: {} } } } } } } } } };
 */
+const fromStringToObj = (str) => {
+    return str.split('.').reduceRight((acc, cur) => {
+      return {
+        [cur]: {...acc}
+      }
+    }, {})
+
+}
+console.log(fromStringToObj('a.b.c.d.e.f.g.h.i'));
 
 /*
     Реализовать CRUD для объекта todo
@@ -36,7 +45,11 @@ const testTodo = {
 const todo = {
   list: [testTodo],
   getTodo(id) {},
-  createTodo(title, description) {},
+  createTodo(title, description) {
   updateTodo(id, newTodo) {},
   deleteTodo(id) {},
 };
+
+
+console.log(testTodo);
+console.log(todo);

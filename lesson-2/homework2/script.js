@@ -42,7 +42,7 @@ console.log(rev(51));
     getCommonElements(a, b); //[1,3,4]
 */
 const getCommonElements = (arr1, arr2) => {
-    const newArray = arr1.filter((item) => arr2(item))
+    const newArray = arr1.filter((item) => arr2.includes(item))
     return newArray
 }
 console.log(getCommonElements([1,2,3,4,5],[1,3,6,3,1,4,7]));
@@ -51,8 +51,9 @@ console.log(getCommonElements([1,2,3,4,5],[1,3,6,3,1,4,7]));
 
     const arr = [1, 2, 3, 4, 5];
     arr.forEach(cb(10)); // 11 12 13 14 15
-
 */
+
+
 
 /*
     Функция, которая будет работать так
@@ -61,3 +62,14 @@ console.log(getCommonElements([1,2,3,4,5],[1,3,6,3,1,4,7]));
     add(2)(4) //6
 */
 
+const add = (a,b) => {
+    if (b) {
+        return a + b
+    } else {
+        return function (c) {
+            return a + c
+        }
+    }
+} 
+console.log(add(1, 2))
+console.log(add(2)(4))
