@@ -44,12 +44,31 @@ const testTodo = {
 
 const todo = {
   list: [testTodo],
-  getTodo(id) {},
+  getTodo(id) {
+    return this.list.find(item => item.id === id)
+  },
   createTodo(title, description) {
-  updateTodo(id, newTodo) {},
+    const newTodo = {
+      id: generateId(), 
+      title,
+      description,
+      completed: false,
+    }
+    this.list.push(newTodo)
+  },
+  updateTodo(id, newTodo) {
+    const change = this.list.find(item => item.id === id)
+    this.list.splice(change, 1, newTodo)
+  },
   deleteTodo(id) {},
+
 };
 
+todo.createTodo('title1')
+todo.createTodo('title1')
+todo.createTodo('title1')
+todo.createTodo('title1')
 
-console.log(testTodo);
-console.log(todo);
+console.log(todo.list)
+
+
