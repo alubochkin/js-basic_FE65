@@ -3,3 +3,22 @@ button {
   font-size: 18px;
   border: none;
 }
+
+.h3 {
+  color: yellow;
+}
+
+.text {
+  font-size: 10px;
+  color: red;
+}
+
+.list {
+  color: blue;
+}
+
+.btn {
+  background-color: blueviolet;
+  border: 2px solid;
+}
+
