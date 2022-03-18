@@ -73,16 +73,17 @@ const users = [
 ];
 
 let currentUser = prompt('your name?')
-switch(currentUser){
-  case users[0].name:
-    console.log(`name: ${users[0].username}, user email:${users[0].email}`);
-    break
-    case users[1].name:
-    console.log(`name: ${users[1].username}, user email:${users[1].email}`);
-    break
-    case users[2].name:
-    console.log(`name: ${users[2].username}, user email:${users[2].email}`);
-    break
-    default:
-      console.log("I don't know who are you!");
+
+
+const searchUser = (userName) => {
+  let lowerString = userName.toLowerCase()
+  for(let key in users) {
+    if(users[key].name.toLowerCase().includes(lowerString)) {
+      console.log(`
+        user name: ${users[key].name}
+        user email: ${users[key].email}
+      `)
+    } 
+  }
 }
+searchUser(currentUser)
