@@ -5,10 +5,8 @@
     РЕШАТЬ ЧЕРЕЗ reduce
 */
 const numbers = [1,2,3,1,2,3,5,4,6,7,3,2,1,2,3,5,3,3,1,2,3,4,1];
-
 const uniqarr = numbers.reduce((acc, cur) => {
-  acc.includes(cur) ? acc : [...acc, cur], []
-}
+ return acc.includes(cur) ? acc : [...acc, cur]}, [])
 console.log(uniqarr)
 /*  
     Создать функцию с именем fromStringToObj
@@ -25,7 +23,7 @@ const fromStringToObj = (string) => {
   return obj;
 };
 
-fromStringToObj(a.b.c.d.e.f.g.h.i)
+console.log(fromStringToObj('a.b.c.d.e.f.g.h.i'))
 /*
     Реализовать CRUD для объекта todo
 
@@ -46,9 +44,28 @@ const testTodo = {
 };
 
 const todo = {
-  list: [testTodo],
-  getTodo(id) {},
-  createTodo(title, description) {},
-  updateTodo(id, newTodo) {},
-  deleteTodo(id) {},
+  list: [],
+  getTodo(id) {
+    return this.list.find(item => id === item.id)
+  },
+  createTodo(title, description) {
+    this.list.push({
+      id: generateId(),
+      title: `${title}`,
+      description: `${description}`,
+    })
+  },
+  updateTodo(id, newTodo) {
+    const todoIndex = this.list.findIndex(item => id === item.id)
+    this.list.splice(todoIndex, 1, newTodo)
+  },
+  deleteTodo(id) {
+    this.list = this.list.filter(item => id !== item.id)
+  },
 };
+
+todo.createTodo('помыть посуду', 'вечером')
+todo.createTodo('вынести мусор', 'утром')
+todo.createTodo('приготовить ужин', 'вечером')
+todo.createTodo('сделать дз', 'в обед')
+console.log(todo.list)
