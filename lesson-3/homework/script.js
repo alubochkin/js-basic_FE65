@@ -4,6 +4,7 @@
     1. через ивент на каждую внопку
     2. через делегирование событий
 */
+
 const actions = document.getElementById("actions");
 const minus = document.querySelector("minus");
 const reset = document.querySelector("reset");
@@ -24,6 +25,7 @@ actions.addEventListener("click", (event) => {
     count.textContent = +count.textContent + 1
   }
 });
+
 /*
     Создать функцию createElement
     Она должна принимать первым параметром имя тега,  вторым объект с свойствами и методами для для элемента (textContent, innerHtml, className, ...и тд)
@@ -47,9 +49,11 @@ actions.addEventListener("click", (event) => {
 */
 
 const createElement = (tagName, options = {}) => {
+
     const el = document.createElement(tagName)
     Object.assign(el, options)
     return el
+
 };
 
 const h1 = document.createElement("h1");
@@ -68,6 +72,7 @@ const title = createElement("h1", {
 
 
 console.log(title)
+
 /*
     Реализовать модель туду листа
 */

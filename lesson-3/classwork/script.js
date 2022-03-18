@@ -14,6 +14,7 @@
     Добавите этот класс к элементу ul
     Добавьте элемент ul перед h3
 */
+
 const h3 = document.createElement("h3");
 h3.className = "title-3";
 h3.innerText = "Получить заряд энергии";
@@ -30,6 +31,7 @@ const ul = document.createElement("ul");
 ul.className = "ulStyle";
 ul.innerHTML = "<li>Первый</li> <li>Второй</li>";
 h3.before(ul);
+
 /*
     Создать кнопку
     При каждом нажатии кнопки она должна менять цвет
@@ -41,6 +43,7 @@ function getRandom(min, max) {
 }
 
 const colors = ["#2656a3", "#611b94", "#9c1c7e", "#3f8a17", "#a31c1c"];
+
 
 const button = document.createElement('button');
 document.body.append(button)
@@ -54,6 +57,7 @@ button.addEventListener("click", () => {
     Создать параграф
     Класть в него информацию о положении курсора мыши Y:X
 */
+
 const pointerCursor = document.createElement('p');
 document.body.append(pointerCursor)
 pointerCursor.className = "cursorStyle";
@@ -80,5 +84,4 @@ pointerCursor2.addEventListener("click", (event) => {
 pointerCursor2.addEventListener("contextmenu", (event) => {
   event.currentTarget.style.fontSize = (parseInt(event.currentTarget.style.fontSize) - 2) + 'px'
 });
-
 
