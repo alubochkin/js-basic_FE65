@@ -72,13 +72,18 @@ const colors = ["#2656a3", "#611b94", "#9c1c7e", "#3f8a17", "#a31c1c"];
     Нужно чтобы context menu по умолчанию не открывался
 */
 
-const body = document.querySelector('body');
-const p = document.createElement('p');
-p.textContent = 'Здесь текст для изменений'
-body.prepend(p);
+// const body = document.querySelector('body');
+// const p = document.createElement('p');
+// p.textContent = 'Здесь текст для изменений'
+// body.prepend(p);
 
-p.addEventListener('click', () => {
-let fSize = getComputedStyle(p).fontSize;
-console.log(fSize);
-
-})
+// p.addEventListener('click', () => {
+// let fSize = parseFloat(getComputedStyle(p).fontSize) ;
+// p.style.fontSize = fSize + 2 + 'px'
+// })
+// p.addEventListener('contextmenu', (event) => {
+//     let fSize = parseFloat(getComputedStyle(p).fontSize) ;
+//     console.log(fSize);
+//     p.style.fontSize = fSize - 2 + 'px'
+//     event.preventDefault()
+//     })
