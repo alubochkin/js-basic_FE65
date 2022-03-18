@@ -27,16 +27,22 @@ Array.prototype.multiply = function() {
     return s
 }
 
+Array.prototype.uniq = function() {
+    let res = this.reduce((total, cur) => ({...total, [cur]: cur }), {})
+    return Object.values(res);
+}
+
 const array = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 console.log(array.sum())
 console.log(array.multiply())
-    /*
-        Добавить метод reverse в прототип объекта String
+console.log(array.uniq());
+/*
+    Добавить метод reverse в прототип объекта String
 
-        Должны работать так:
-            const string = 'some string'
-            console.log(string.reverse()); gnirts emos
-    */
+    Должны работать так:
+        const string = 'some string'
+        console.log(string.reverse()); gnirts emos
+*/
 
 /*
     Создать input
