@@ -55,36 +55,53 @@ buttons.addEventListener('click', (event) => {
 
 */
 
-// const createElement = (tagName, options = {}) => {
-
-// };
-
 // const h1 = document.createElement("h1");
 // h1.className = "title";
 // h1.textContent = "Main title";
 // h1.style.fontSize = "48px";
 // h1.style.textAlign = "center";
-
 // document.body.append(h1);
+
+let someObject = {
+    className: "title",
+    textContent: "Main title",
+    style: "font-size: 48px, text-align: center",
+}
+
+const createElement = (tagName, object = {}) => {
+    const tag = document.createElement(tagName)
+    if (object.hasOwnProperty("className")) {
+        tag.setAttribute('class', object.className)
+    }
+    if (object.hasOwnProperty('textContent')) {
+        tag.setAttribute('text', object.textContent)
+    }
+    if (object.hasOwnProperty('style')) {
+        tag.setAttribute('style', object.style)
+    }
+    return tag
+};
+console.log(createElement('h1', someObject))
+
 
 // /*
 //     Реализовать модель туду листа
 // */
 
-// const todoItem = {
-//     id: 1,
-//     title: "title",
-//     description: "description",
-//     completed: false,
-// };
+const todoItem = {
+    id: 1,
+    title: "title",
+    description: "description",
+    completed: false,
+};
 
-// const todo = {
-//     list: [todoItem],
-//     getById(id) {},
-//     createTodo(newTodo) {},
-//     updateTodo(id, newTodo) {},
-//     deleteTodo(id) {},
-//     sortByTitle() {},
-//     sortByDescription() {},
-//     searchByTitle(title) {},
-// };
+const todo = {
+    list: [todoItem],
+    getById(id) {},
+    createTodo(newTodo) {},
+    updateTodo(id, newTodo) {},
+    deleteTodo(id) {},
+    sortByTitle() {},
+    sortByDescription() {},
+    searchByTitle(title) {},
+};
