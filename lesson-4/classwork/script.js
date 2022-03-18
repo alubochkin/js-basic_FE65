@@ -11,13 +11,32 @@
         console.log(array1.uniq()); // [1,2,3]
 */
 
-/*
-    Добавить метод reverse в прототип объекта String
+Array.prototype.sum = function() {
+    let s = 0;
+    for (let i = 0; i < this.length; i++) {
+        s += this[i]
+    }
+    return s
+}
 
-    Должны работать так:
-        const string = 'some string'
-        console.log(string.reverse()); gnirts emos
-*/
+Array.prototype.multiply = function() {
+    let s = 1;
+    for (let i = 0; i < this.length; i++) {
+        s *= this[i]
+    }
+    return s
+}
+
+const array = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+console.log(array.sum())
+console.log(array.multiply())
+    /*
+        Добавить метод reverse в прототип объекта String
+
+        Должны работать так:
+            const string = 'some string'
+            console.log(string.reverse()); gnirts emos
+    */
 
 /*
     Создать input
@@ -32,19 +51,19 @@
 */
 
 const todoItem = {
-  id: 1,
-  title: "title",
-  description: "description",
-  completed: false,
+    id: 1,
+    title: "title",
+    description: "description",
+    completed: false,
 };
 
 const todo = {
-  list: [todoItem],
-  getById(id) {},
-  createTodo(newTodo) {},
-  updateTodo(id, newTodo) {},
-  deleteTodo(id) {},
-  sortByTitle() {},
-  sortByDescription() {},
-  searchByTitle(title) {},
+    list: [todoItem],
+    getById(id) {},
+    createTodo(newTodo) {},
+    updateTodo(id, newTodo) {},
+    deleteTodo(id) {},
+    sortByTitle() {},
+    sortByDescription() {},
+    searchByTitle(title) {},
 };
