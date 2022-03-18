@@ -32,10 +32,15 @@ Array.prototype.uniq = function() {
     return Object.values(res);
 }
 
+Array.prototype.random = function() {
+    return this[Math.floor(Math.random() * this.length)];
+}
+
 const array = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 console.log(array.sum())
 console.log(array.multiply())
 console.log(array.uniq());
+console.log(array.random());
 /*
     Добавить метод reverse в прототип объекта String
 
@@ -43,11 +48,24 @@ console.log(array.uniq());
         const string = 'some string'
         console.log(string.reverse()); gnirts emos
 */
-
+const string = 'some string'
+String.prototype.reverse = function() {
+    return this.split('').reverse().join('')
+}
+console.log(string.reverse());
 /*
     Создать input
     При перезагрузке страницы в инпуте должно быть последнее введённое значение
 */
+const body = document.body
+const input = document.createElement('input')
+input.value = localStorage.getItem('value') || '';
+body.prepend(input)
+
+input.addEventListener('input', (event) => {
+    localStorage.setItem('value', (event.target.value))
+})
+
 
 /*
     lesson-3/homework Реализовать модель туду листа
