@@ -1,7 +1,6 @@
 #### Цели
 
 1. [LocalStorage, sessionStorage](#Storages)
-2. [Куки](#Cookie)
 3. [Прототип объекта](#Proto)
 4. [Конструкторы, создание объектов через "new"](#Constructor)
 5. [Prototype](#Prototype)
