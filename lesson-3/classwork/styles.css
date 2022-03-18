@@ -3,3 +3,14 @@ button {
   font-size: 18px;
   border: none;
 }
+
+.red {
+  color: red;
+}
+
+.blue {
+  color: blueviolet;
+}
+.yello {
+  color: yellow;
+}
