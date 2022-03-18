@@ -14,15 +14,15 @@
 
 // ------------------------------------------
 
-// const todoList = document.getElementById("todo-list");
+const todoList = document.getElementById("todo-list");
 
-// console.log(todoList.outerHTML);
-// console.log(todoList.textContent);
+console.log(todoList.outerHTML);
+console.log(todoList.textContent);
 
-// const text = "<h1>Hello world</h1>";
+const text = "<h1>Hello world</h1>";
 
-// const elem1 = document.getElementById("innerHTML");
-// const elem2 = document.getElementById("textContent");
+const elem1 = document.getElementById("innerHTML");
+const elem2 = document.getElementById("textContent");
 
-// elem1.innerHTML = text
-// elem2.textContent = text
+elem1.innerHTML = text
+elem2.textContent = text
