@@ -53,11 +53,25 @@ function getRandom(min, max) {
 
 const colors = ["#2656a3", "#611b94", "#9c1c7e", "#3f8a17", "#a31c1c"];
 
+const buttonOne = document.createElement("button")
+document.body.append(buttonOne)
+buttonOne.textContent = 'button'
+buttonOne.addEventListener('click', () => {
+    buttonOne.style.backgroundColor = colors[(getRandom(0,5))]
+})
+
 /*
     Создать параграф
     Класть в него информацию о положении кур`сора мыши Y:X
 */
-
+const pTwo = document.createElement("p")
+document.body.append(pTwo)
+pTwo.textContent = 'pTwo'
+pTwo.addEventListener('mousemove',(event) => {
+    const cordinate = `${event.clientX} : ${event.clientY}`
+    console.log('Ptwo')
+    console.log(cordinate)
+})
 /*
     Создать параграф с рандомным текстом
     При нажатии левой клавиши font-size должен увеличиваться на 2px
@@ -65,3 +79,16 @@ const colors = ["#2656a3", "#611b94", "#9c1c7e", "#3f8a17", "#a31c1c"];
 
     Нужно чтобы context menu по умолчанию не открывался
 */
+
+const pThree = document.createElement("p")
+document.body.append(pThree)
+pThree.textContent = 'Random text'
+
+pThree.addEventListener('click',() => {
+    pThree.style.fontSize = '18px'
+})
+pThree.addEventListener('contextmenu', (event) => {
+    event.preventDefault()
+    pThree.style.fontSize = '14px'
+})
+
