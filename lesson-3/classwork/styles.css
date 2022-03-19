@@ -1,5 +1,38 @@
-button {
-  padding: 12px;
+.button {
+  padding: 20px;
   font-size: 18px;
   border: none;
+  width: 10%;
+  background-color: rgb(101, 103, 247);
+  cursor: pointer;
+}
+
+.h3 {
+  color: rgb(0, 2, 128);
+  width: 10%;
+}
+
+.par {
+  color: rgb(101, 103, 247);
+  width: 20%;
+}
+
+.ul {
+  color: purple;
+  font-size: 9px;
+}
+
+.paragraph {
+  color: purple;
+}
+
+.fontSize {
+  font-size: 10px;
+}
+
+.fontSizeLeft {
+  font-size: 9px;
+}
+.fontSizeRight {
+  font-size: 12px;
 }
