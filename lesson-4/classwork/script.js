@@ -82,11 +82,52 @@ const todoItem = {
 
 const todo = {
   list: [todoItem],
-  getById(id) {},
-  createTodo(newTodo) {},
-  updateTodo(id, newTodo) {},
-  deleteTodo(id) {},
-  sortByTitle() {},
-  sortByDescription() {},
-  searchByTitle(title) {},
+  getById(id) {
+    return this.list.findIndex((item) => item.id === id);
+  },
+  createTodo(newTodo, description) {
+    this.list.push({
+      id: this.getById(),
+      title: `${newTodo}`,
+      description: `${description}`,
+      completed: false,
+    });
+  },
+  updateTodo(id, newTodo, description) {
+    let toDoIndex = this.list.findIndex((item) => item.id === id);
+    ///value тут будет
+    newTodo = {
+      id: this.getById(),
+      title: `${newTodo}`,
+      description: `${description}`,
+      completed: false,
+    };
+    this.list.splice(toDoIndex, 1, newTodo);
+  },
+  deleteTodo(id) {
+    let toDoIndex = this.list.findIndex((item) => item.id === id);
+    if (toDoIndex !== -1) {
+      this.list.splice(toDoIndex, 1);
+    }
+  },
+  sortByTitle() {
+    this.list.sort((a, b) => (a.title > b.title ? 1 : -1));
+  },
+  sortByDescription() {
+    this.list.sort((a, b) => (a.description > b.description ? 1 : -1));
+  },
+  searchByTitle(title) {
+    this.list.filter((item) => item.title === title);
+  },
+  saveTodo() {
+    localStorage.setItem("Todo", this.list);
+  },
 };
+
+todo.getById();
+todo.createTodo();
+todo.updateTodo();
+todo.deleteTodo();
+todo.sortByTitle();
+todo.sortByDescription();
+todo.searchByTitle();
