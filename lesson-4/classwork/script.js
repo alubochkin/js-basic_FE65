@@ -60,10 +60,10 @@ console.log(string.reverse());
 */
 
 const input = document.createElement("input");
-document.body.append("input");
+document.body.append(input);
 input.value = "ooooooo";
 input.addEventListener("input", function () {
-  EventTarget.value = localStorage.getItem("input");
+  EventTarget.value = localStorage.setItem("input");
 });
 
 /*
