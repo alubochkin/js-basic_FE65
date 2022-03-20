@@ -74,6 +74,7 @@ input.addEventListener('input', (event) => {
     ** реализовать функцию конструктор которая будет возвращаться объект todo
 */
 
+const generateId = (x = 999) => Math.random() * x;
 const todoItem = {
     id: 1,
     title: "title",
@@ -83,11 +84,40 @@ const todoItem = {
 
 const todo = {
     list: [todoItem],
-    getById(id) {},
-    createTodo(newTodo) {},
-    updateTodo(id, newTodo) {},
-    deleteTodo(id) {},
-    sortByTitle() {},
-    sortByDescription() {},
-    searchByTitle(title) {},
+    getById(id) {
+        const getId = this.list.find(person => person.id === id)
+    },
+    createTodo(newTodo) {
+        const newTodo = {
+            id: generateId(),
+            title: `${title}`,
+            description: `${description}`,
+            completed: false,
+        }
+        this.list.push(newTodo)
+    },
+    updateTodo(id, newTodo) {
+        this.list = this.list.map(todo => {
+            if (todo === id) {
+                return {...todo, ...newtodo }
+            }
+            return todo
+        })
+        returnthis.list
+    },
+    deleteTodo(id) {
+        const deleteId = this.list.filter(person => person.id !== id)
+    },
+    sortByTitle() {
+        const sortTitle = this.list.sort((a, b) => (a.title > b.title ? -1 : 1))
+    },
+    sortByDescription() {
+        const sortDescription = this.list.sort((a, b) => (a.description > b.description ? -1 : 1))
+    },
+    searchByTitle(title) {
+        const searchTitle = this.list.find(person => person.id === id)
+    },
+    saveLocalStorage() {
+        localStorage.setItem('todo', JSON.stringify(newtodo))
+    }
 };
