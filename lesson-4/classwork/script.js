@@ -86,6 +86,7 @@ const todo = {
     list: [todoItem],
     getById(id) {
         const getId = this.list.find(person => person.id === id)
+        return getId
     },
     createTodo(newTodo) {
         const newTodo = {
@@ -95,6 +96,7 @@ const todo = {
             completed: false,
         }
         this.list.push(newTodo)
+        return newTodo
     },
     updateTodo(id, newTodo) {
         this.list = this.list.map(todo => {
@@ -103,19 +105,23 @@ const todo = {
             }
             return todo
         })
-        returnthis.list
+        return this.list
     },
     deleteTodo(id) {
         const deleteId = this.list.filter(person => person.id !== id)
+        return deleteId
     },
     sortByTitle() {
         const sortTitle = this.list.sort((a, b) => (a.title > b.title ? -1 : 1))
+        return sortTitle
     },
     sortByDescription() {
         const sortDescription = this.list.sort((a, b) => (a.description > b.description ? -1 : 1))
+        return sortDescription
     },
     searchByTitle(title) {
         const searchTitle = this.list.find(person => person.id === id)
+        return searchTitle
     },
     saveLocalStorage() {
         localStorage.setItem('todo', JSON.stringify(newtodo))
