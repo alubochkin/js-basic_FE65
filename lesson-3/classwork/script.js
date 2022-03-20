@@ -70,14 +70,15 @@ document.body.addEventListener("mousemove", (ev) => {
 const paragraphTwo = document.createElement("p");
 document.body.append(paragraphTwo);
 paragraphTwo.textContent = "Я увеличиваюсь и уменьшаюсь";
-const fontSize = paragraphTwo.classList("fontSize");
+//const fontSize = paragraphTwo.classList("fontSize");
+paragraph.fontSize = "12px";
 paragraphTwo.addEventListener("click", (event) => {
-  if (event.which === 1) {
-    paragraphTwo.classList.toggle("fontSizeLeft");
-  }
-  paragraphTwo.classList.toggle("fontSizeRight");
+  event.currentTarget.style.fontSize =
+    event.currentTarget.style.fontSize.slice(0, -2) + 2 + "px";
 });
 
 paragraphTwo.addEventListener("contextmenu", (event) => {
   event.preventDefault();
+  event.currentTarget.style.fontSize =
+    event.currentTarget.style.fontSize.slice(0, -2) - 2 + "px";
 });
