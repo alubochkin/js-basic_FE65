@@ -93,16 +93,15 @@ const todo = {
   },
   createTodo(title, description) {
     this.list.push({
-      id: Math.floor(Math.random(new Date()) * 100),
+      id: Math.floor(Math.random() * 100),
       title,
       description,
       completed: false,
     });
   },
-  updateTodo(id, title, description) {
+  updateTodo(id, newTodo) {
     let task = this.list.find((item) => item.id === id);
-    task.title = title;
-    task.description = description;
+    task = [...task, ...newTodo];
   },
   deleteTodo(id) {
     this.list = this.list.filter((item) => item.id !== id);
@@ -114,10 +113,9 @@ const todo = {
     this.list.sort((a, b) => (a.description > b.description ? 1 : -1));
   },
   searchByTitle(title) {
-    const elem = this.list.find((item) => item.title === title);
+    const elem = this.list.filter(item => item.title.includes(title));
     console.log(elem);
   },
 };
-
 
 console.log(todo.list);
