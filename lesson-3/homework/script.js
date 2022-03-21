@@ -85,15 +85,9 @@ const todo = {
     });
     console.log(this.list);
   },
-  updateTodo(id, newTodo, description) {
-    let todoIndex = this.list.findIndex((elem) => elem.id === id);
-    newTodo = {
-      id: generateId(),
-      title: `${newTodo}`,
-      description: `${description}`,
-      completed: false,
-    };
-    this.list.splice(todoIndex, 1, newTodo);
+  updateTodo(id, newTodo) {
+    let index = this.list.findIndex((elem) => elem.id === id);
+    this.list[index] = { ...this.list[index], ...newTodo };
   },
   deleteTodo(id) {
     this.list = this.list.filter((elem) => elem.id !== id);
