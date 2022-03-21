@@ -56,7 +56,7 @@ console.log(string.reverse());
 */
 let input = document.createElement("input");
 document.body.append(input);
-input.value = localStorage.getItem("value");
+input.value = localStorage.getItem("value") ?? "";
 input.addEventListener("input", (e) => {
   localStorage.setItem("value", e.target.value);
 });
@@ -98,15 +98,9 @@ const todo = {
     });
     console.log(this.list);
   },
-  updateTodo(id, newTodo, description) {
-    let todoIndex = this.list.findIndex((elem) => elem.id === id);
-    newTodo = {
-      id: generateId(),
-      title: `${newTodo}`,
-      description: `${description}`,
-      completed: false,
-    };
-    this.list.splice(todoIndex, 1, newTodo);
+  updateTodo(id, newTodo) {
+    let index = this.list.findIndex((elem) => elem.id === id);
+    this.list[index] = { ...this.list[index], ...newTodo };
   },
   deleteTodo(id) {
     this.list = this.list.filter((elem) => elem.id !== id);
@@ -118,7 +112,7 @@ const todo = {
     this.list.sort((a, b) => (a.description > b.description ? 1 : -1));
   },
   searchByTitle(title) {
-    let elem = this.list.find((elem) => elem.title === title);
+    let elem = this.list.filter((elem) => elem.title.includes(title));
     console.log(elem);
   },
   saveTodoList() {
@@ -127,3 +121,4 @@ const todo = {
 };
 todo.createTodo("name", "name description");
 todo.saveTodoList();
+todo.updateTodo(todoItem.id, { completed: true });
