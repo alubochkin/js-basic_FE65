@@ -83,12 +83,14 @@ pTwo.addEventListener('mousemove',(event) => {
 const pThree = document.createElement("p")
 document.body.append(pThree)
 pThree.textContent = 'Random text'
+pThree.style.fontSize = "16px"
+
 
 pThree.addEventListener('click',() => {
-    pThree.style.fontSize = '18px'
+    pThree.style.fontSize =+(pThree.style.fontSize).slice(0, -2) + 2 + 'px'
 })
 pThree.addEventListener('contextmenu', (event) => {
     event.preventDefault()
-    pThree.style.fontSize = '14px'
+    pThree.style.fontSize =+(pThree.style.fontSize).slice(0, -2) - 2 + 'px'
 })
 
