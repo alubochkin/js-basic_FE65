@@ -25,9 +25,12 @@
     Добавите этот класс к элементу ul
     Добавьте элемент ul перед h3
 */
-const ul = document.createElement("li");
+const ul = document.createElement("ul");
 ul.classList.add("yello");
 document.body.prepend(ul);
+
+const li = document.createElement("li");
+ul.append(li);
 
 
 /*
@@ -73,14 +76,15 @@ document.querySelector(".info").innerHTML = `
 */
 const p2 = document.createElement("p2");
 p2.textContent = 'Любой текст';
-body.prepend(p2);
+p2.style.fontSize = "12px";
+document.body.prepend(p2);
 
-p2.addEventListener('click', () => {
-    fSize += 2
-    p2.style.fontSize = `${fSize}px`
+p2.addEventListener("click", (e) => {
+    e.currentTarget.style.fontSize = 
+    +e.currentTarget.style.fontSize.slice(0, 2) + 2 + "px";
 });
-p2.addEventListener('contextmenu', (e) => {
-    e.preventDefault ()
-    fSize -= 2
-    p2.style.fontSize = `${fSize}px`
-});
+p2.addEventListener("contextmenu", (e) => {
+    e.preventDefault ();
+    e.currentTarget.style.fontSize = 
+    +e.currentTarget.style.fontSize.slice(0, -2) - 2 + "px";
+    });
