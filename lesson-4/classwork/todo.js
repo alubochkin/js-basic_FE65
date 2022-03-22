@@ -21,7 +21,6 @@ const todoItem = {
         completed: false,
       };
       this.list.push(newTask)
-      return newTask
     },
     updateTodo(id, newTodo) {
       const findId = this.list.findIndex((task) => task.id === id);
@@ -31,10 +30,10 @@ const todoItem = {
       this.list = this.list.filter((task) => task.id !== id)
     },
     sortByTitle() {
-      return this.list.sort((a, b) => (a.title > b.title ? 1 : -1));
+      this.list.sort((a, b) => (a.title > b.title ? 1 : -1));
     },
     sortByDescription() {
-      return this.list.sort((a, b) => ((a.description > b.description) ? 1 : -1));
+      this.list.sort((a, b) => ((a.description > b.description) ? 1 : -1));
     },
     searchByTitle(title) {
       const task = this.list.find((task) => task.title === title);
@@ -45,3 +44,25 @@ const todoItem = {
     },
   };
   
+  function ToDo(list) {
+      this.list = list
+  }
+
+ToDo.prototype.getById = function (id) {
+      return this.list.find((task) => task.id === id)
+  }
+
+ToDo.prototype.createTodo = function (newTodo, description) {
+    const newTask = {
+        id: randomId(),
+        title: newTodo,
+        description: description || null,
+        completed: false,
+      };
+      this.list.push(newTask)
+}
+
+ToDo.prototype.updateTodo = function (id, newTodo) {
+    const findId = this.list.findIndex((task) => task.id === id);
+      Object.assign(this.list[findId], newTodo);
+}
