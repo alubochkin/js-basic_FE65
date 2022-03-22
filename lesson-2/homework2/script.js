@@ -70,10 +70,10 @@ console.log(reverseInt(500))
 
     getCommonElements(a, b); //[1,3,4]
 */
-const a = [1,2,3,4,5];
-const b = [1,3,6,3,1,4,7];
+const a = [1, 2, 3, 4, 5];
+const b = [1, 3, 6, 3, 1, 4, 7];
 
-const getCommonElements = (a,b) => {
+const getCommonElements = (a, b) => {
     let c = []
     for (let i = 0; i < a.length; i++) {
         if (b.includes(a[i])) {
@@ -112,12 +112,12 @@ function add(a, b) {
     if (b) {
         const result1 = a + b;
         return result1;
-    } 
+    }
 
     return function (x) {
         const result2 = a + x;
         return result2;
     };
-  }
-  
-  console.log(add(1,5));
+}
+
+console.log(add(1, 5));
