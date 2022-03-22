@@ -14,6 +14,7 @@
 .sort .search {
     width: 360px;
     border-radius: 5px;
+    background: rgba(253, 244, 244, 0.6);
 }
 
 body {
@@ -21,7 +22,7 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
     height: 100%;
-    max-width: 1536px;
+    max-width: 1510px;
     width: 100%;
 }
 
@@ -43,12 +44,13 @@ body {
 }
 
 .todo {
-    width: 450px;
+    width: 480px;
     border-radius: 5px;
+    transform: rotate(5deg)
 }
 
 .forma input {
-    width: 450px;
+    width: 480px;
     background: rgba(253, 244, 244, 0.6);
     border-radius: 5px;
     height: 42px;
