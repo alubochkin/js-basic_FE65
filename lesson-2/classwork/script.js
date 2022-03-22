@@ -7,6 +7,7 @@
 
     решить через рекурсию
 */
+<<<<<<< HEAD
 
 let timer = (a, b) => {
     if (a === b) {
@@ -22,6 +23,21 @@ let timer = (a, b) => {
 timer(1, 5)
 
 
+=======
+function timer(a, b) {
+    if (a === b) {
+      console.log("Таймер остановился");
+      return;
+    }
+  
+    setTimeout(() => {
+      console.log(a);
+  
+      timer(a + 1, b);
+    }, 1000);
+  }
+  
+>>>>>>> 646fa09eba3636bba3e6e8ddc91695a877e33ecc
 /*
     1. timer(a , b)
     2. сравнить a, b если === return
@@ -37,7 +53,16 @@ let compact = (args) => {
     return array
 }
 
+<<<<<<< HEAD
 console.log(compact([null, 7, false, 3]));
+=======
+function compact(arr) {
+    let a = arr.filter((item => Boolean(item)))
+    console.log(a)
+}
+
+compact([false, 2, 0, 54, undefined])
+>>>>>>> 646fa09eba3636bba3e6e8ddc91695a877e33ecc
 /*
     Создать объект user вида 
     {
@@ -57,6 +82,7 @@ console.log(compact([null, 7, false, 3]));
     МЕТОДЫ ДОЛЖНЫ РАБОТАТЬ С this
 */
 let user = {
+<<<<<<< HEAD
     name: 'Artur',
     lastName: 'Kuchinski',
     age: '29',
@@ -98,6 +124,39 @@ user.clearKnowledge()
 user.clearHobbies()
 
 
+=======
+  name: 'Valentin',
+  lastName: 'Daskevich',
+  age: '27',
+  knowledge: [],
+  hobbies: [],
+  
+  showInfo() {
+    const info = `User name: ${this.name}, User lastname: ${this.lastName}, User age: ${this.age}, User's skills: ${this.knowledge}, User's hobbies: ${this.hobbies}`
+    console.log(info)
+}, 
+  addKnowledge(newKnowledge) {
+      this.knowledge.push(newKnowledge);
+      console.log(this.knowledge);
+  },
+  addHobby(newHobby) {
+      this.hobbies.unshift(newHobby);
+      console.log(this.hobbies);
+  },
+  clearKnowledge() {
+      this.knowledge = [];
+  },
+  clearHobbies() {
+      this.hobbies = [];
+  },
+}
+user.showInfo()
+user.addKnowledge("Frontend")
+user.addHobby("gym")
+user.showInfo()
+user.clearKnowledge()
+user.clearHobbies()
+>>>>>>> 646fa09eba3636bba3e6e8ddc91695a877e33ecc
 /*
     Дан объект user
     Реализовать методы:
@@ -112,6 +171,7 @@ user.clearHobbies()
 */
 
 const users = {
+<<<<<<< HEAD
     list: [
         { id: 0, name: "Vlad" },
         { id: 1, name: "Vova" },
@@ -125,3 +185,37 @@ const users = {
     getAllNames() {},
     getAllIds() {},
 };
+=======
+  list: [
+    { id: 0, name: "Vlad" },
+    { id: 1, name: "Vova" },
+    { id: 2, name: "Victor" },
+    { id: 3, name: "Kate" },
+  ],
+findById(id) {
+  return console.log(this.list.find(item => id === item.id))
+},
+findByName(name) {
+  return console.log(this.list.find(item => name === item.name))
+},
+filterById(id) {
+  console.log(this.list = this.list.filter(item => id !== item.id))
+},
+filterByName(name) {
+  console.log(this.list = this.list.filter(item => name !== item.name))
+},
+getAllNames() {
+  return console.log(this.list.reduce((acc, curr) => [...acc, curr.name], []))
+},
+getAllIds() { 
+  return console.log(this.list.reduce((acc, curr) => [...acc, curr.id], [])) 
+},
+};
+
+users.findById(3)
+users.findByName('Vova')
+users.filterById(2)
+users.filterByName('Vova')
+users.getAllNames()
+users.getAllIds()
+>>>>>>> 646fa09eba3636bba3e6e8ddc91695a877e33ecc

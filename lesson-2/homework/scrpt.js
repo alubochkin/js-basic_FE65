@@ -4,7 +4,9 @@
 
     РЕШАТЬ ЧЕРЕЗ reduce
 */
+const numbers = [1,2,3,1,2,3,5,4,6,7,3,2,1,2,3,5,3,3,1,2,3,4,1];
 
+<<<<<<< HEAD
 
 let array = [1, 2, 3, 1, 2, 3, 5, 4, 6, 7, 3, 2, 1, 2, 3, 5, 3, 3, 1, 2, 3, 4, 1];
 
@@ -24,12 +26,25 @@ console.log(compact(array));
 // }, []);
 // console.log();
 
+=======
+const uniqarr = numbers.reduce((acc, cur) => {
+  acc.includes(cur) ? acc : [...acc, cur], []
+}
+console.log(uniqarr)
+>>>>>>> 646fa09eba3636bba3e6e8ddc91695a877e33ecc
 /*  
     Создать функцию с именем fromStringToObj
     Функция должна примать строку и возвращать объект
     'a.b.c.d.e.f.g.h.i' => { a: { b: { c: { d: { e: { f: { g: { h: { i: {} } } } } } } } } };
 */
+const fromStringToObj = (string) => {
+  const obj = string.split(".").reduceRight((acc, cur) => {
+    return {
+      [cur]: acc,
+    };
+  }, {});
 
+<<<<<<< HEAD
 let fromStringToObj = (string) => {
     const strArr = string.split('.')
     return strArr.reduceRight((acc, item) => {
@@ -42,6 +57,12 @@ let fromStringToObj = (string) => {
 console.log(fromStringToObj('a.b.c.d.e.f.g.h.i'))
 
 
+=======
+  return obj;
+};
+
+fromStringToObj(a.b.c.d.e.f.g.h.i)
+>>>>>>> 646fa09eba3636bba3e6e8ddc91695a877e33ecc
 /*
     Реализовать CRUD для объекта todo
 
