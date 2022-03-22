@@ -91,39 +91,74 @@ const todoItem = {
 
 
 
-const todo = {
-  list: JSON.parse(localStorage.getItem('todoList')) ?? [],
-  getById(id) {
-    return this.list.find((item) => item.id === id);
-  },
-  createTodo(title, description) {
-    this.list.push({
-      id: Math.floor(Math.random() * 100),
-      title,
-      description,
-      completed: false,
-    });
-  },
-  updateTodo(id, newTodo) {
-    let task = this.list.find((item) => item.id === id);
-    task = [...task, ...newTodo];
-  },
-  deleteTodo(id) {
-    this.list = this.list.filter((item) => item.id !== id);
-  },
-  sortByTitle() {
-    this.list.sort((a, b) => (a.title > b.title ? 1 : -1));
-  },
-  sortByDescription() {
-    this.list.sort((a, b) => (a.description > b.description ? 1 : -1));
-  },
-  searchByTitle(title) {
-    const elem = this.list.filter(item => item.title.includes(title));
-    console.log(elem);
-  },
-  saveToDo(){
-    localStorage.setItem('todoList', JSON.stringify(this.list))
-  }
-};
+// const todo = {
+//   list: JSON.parse(localStorage.getItem('todoList')) ?? [],
+//   getById(id) {
+//     return this.list.find((item) => item.id === id);
+//   },
+//   createTodo(title, description) {
+//     this.list.push({
+//       id: Math.floor(Math.random() * 100),
+//       title,
+//       description,
+//       completed: false,
+//     });
+//   },
+//   updateTodo(id, newTodo) {
+//     let task = this.list.find((item) => item.id === id);
+//     task = [...task, ...newTodo];
+//   },
+//   deleteTodo(id) {
+//     this.list = this.list.filter((item) => item.id !== id);
+//   },
+//   sortByTitle() {
+//     this.list.sort((a, b) => (a.title > b.title ? 1 : -1));
+//   },
+//   sortByDescription() {
+//     this.list.sort((a, b) => (a.description > b.description ? 1 : -1));
+//   },
+//   searchByTitle(title) {
+//     const elem = this.list.filter(item => item.title.includes(title));
+//     console.log(elem);
+//   },
+//   saveToDo(){
+//     localStorage.setItem('todoList', JSON.stringify(this.list))
+//   }
+// };
 
-console.log(todo.list);
+function Todo(list){
+  this.list = list;
+}
+Todo.prototype.getById = function (id){
+  return this.list.find((item) => item.id === id);
+}
+Todo.prototype.createTodo = function (title, description) {
+  this.list.push({
+    id: Math.floor(Math.random() * 100),
+    title,
+    description,
+    completed: false,
+  });
+},
+
+Todo.prototype.updateTodo = function (id, newTodo) {
+  let task = this.list.find((item) => item.id === id);
+  task = [...task, ...newTodo];
+}
+Todo.prototype.deleteTodo = function (id) {
+  this.list = this.list.filter((item) => item.id !== id);
+}
+Todo.prototype.sortByTitle = function () {
+  this.list.sort((a, b) => (a.title > b.title ? 1 : -1));
+}
+Todo.prototype.sortByDescription = function() {
+  this.list.sort((a, b) => (a.description > b.description ? 1 : -1));
+}
+Todo.prototype.searchByTitle = function (title) {
+  const elem = this.list.filter(item => item.title.includes(title));
+  console.log(elem);
+}
+Todo.prototype.saveToDo = function(){
+  localStorage.setItem('todoList', JSON.stringify(this.list))
+}
+const todo = new Todo(JSON.parse(localStorage.getItem('list')) ?? [])
