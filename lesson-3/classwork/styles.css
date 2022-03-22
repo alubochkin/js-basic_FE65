@@ -3,3 +3,42 @@ button {
   font-size: 18px;
   border: none;
 }
+
+
+.title-3 {
+  font-size: 36px;
+  color: #8ba59c;
+  margin-top: 20px;
+  margin-left: 50px;
+}
+.textStyle {
+  font-size: 24px;
+  color: #3cb88c;
+  margin-top: 20px;
+  margin-left: 50px;
+}
+.ulStyle {
+  font-size: 18px;
+  color: #d41212;
+  margin-top: 20px;
+  margin-left: 50px;
+}
+.btnStyle {
+  font-size: 18px;
+  margin-top: 20px;
+  margin-left: 50px;
+  cursor: pointer;
+}
+.cursorStyle {
+  font-size: 18px;
+  margin-top: 20px;
+  margin-left: 50px;
+  cursor: pointer;
+}
+.cursorStyle2 {
+  font-size: 18px;
+  margin-top: 20px;
+  margin-left: 50px;
+  cursor: pointer;
+}
+
