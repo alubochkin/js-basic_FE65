@@ -131,3 +131,47 @@ todo.deleteTodo();
 todo.sortByTitle();
 todo.sortByDescription();
 todo.searchByTitle();
+
+function Todo(list) {
+this.list = list;
+}
+Todo.prototype.getById = function (id) {
+  return this.list.find((todo) => todo.id === id);
+};
+Todo.prototype.createTodo(newTodo, description){
+  this.list.push({
+    id: this.getById(),
+    title: `${newTodo}`,
+    description: `${description}`,
+    completed: false,
+  })
+};
+  Todo.prototype.updateTodo(id, newTodo, description) {
+    let toDoIndex = this.list.findIndex((item) => item.id === id);
+    newTodo = {
+      id: this.getById(),
+      title: `${newTodo}`,
+      description: `${description}`,
+      completed: false,
+    };
+    this.list.splice(toDoIndex, 1, newTodo);
+  };
+  Todo.prototype.deleteTodo(id) {
+    let toDoIndex = this.list.findIndex((item) => item.id === id);
+    if (toDoIndex !== -1) {
+      this.list.splice(toDoIndex, 1);
+    }
+  };
+  Todo.prototype.sortByTitle() {
+    this.list.sort((a, b) => (a.title > b.title ? 1 : -1));
+  }
+  Todo.prototype.sortByDescription() {
+    this.list.sort((a, b) => (a.description > b.description ? 1 : -1));
+  }
+  Todo.prototype.searchByTitle(title) {
+     return this.list.filter((item) => item.title === title);
+  }
+
+
+
+const todo2 = new Todo(JSON.parse(localStorage.getItem("list")) ?? []);
