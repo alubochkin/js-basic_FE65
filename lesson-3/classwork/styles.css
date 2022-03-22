@@ -3,3 +3,34 @@ button {
   font-size: 18px;
   border: none;
 }
+
+.title {
+  color: yellow;
+  font-size: 2rem;
+  background-color: darkblue;
+  text-align: center;
+}
+.text {
+  font-size: 1.5rem;
+  color: navy;
+  background-color: yellow;
+  text-align: center;
+}
+.list {
+  font-size: 1.5rem;
+  color: royalblue;
+  background-color: pink;
+}
+.btn {
+  color: black;
+  border: 2px solid black;
+  border-radius: 1rem;
+  cursor: pointer;
+}
+.p {
+  /* font-size: 18px; */
+  padding: 0.5rem;
+  border: 2px solid yellowgreen;
+  border-radius: 1rem;
+  text-align: center;
+}
