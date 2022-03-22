@@ -156,7 +156,7 @@ Todo.prototype.sortByDescription = function() {
 }
 Todo.prototype.searchByTitle = function (title) {
   const elem = this.list.filter(item => item.title.includes(title));
-  console.log(elem);
+  return elem
 }
 Todo.prototype.saveToDo = function(){
   localStorage.setItem('todoList', JSON.stringify(this.list))
