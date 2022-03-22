@@ -1,0 +1,78 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+.sort {
+    display: flex;
+    text-align: center;
+    gap: 15px;
+    margin: 30px 0 0 40px;
+}
+
+.sort .search {
+    width: 360px;
+    border-radius: 5px;
+}
+
+body {
+    background: url(../classwork/fon.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+    max-width: 1536px;
+    width: 100%;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 70px;
+    text-align: center;
+    margin-top: 60px;
+    transform: rotate(-10deg);
+}
+
+.forma {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    text-align: end;
+}
+
+.todo {
+    width: 450px;
+    border-radius: 5px;
+}
+
+.forma input {
+    width: 450px;
+    background: rgba(253, 244, 244, 0.6);
+    border-radius: 5px;
+    height: 42px;
+}
+
+.forma .description {
+    height: 140px;
+}
+
+.forma label {
+    display: flex;
+    font-size: 30px;
+    color: #EC7979;
+}
+
+button {
+    border-radius: 5px;
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-size: 15px;
+    line-height: 20px;
+    text-align: center;
+    background-color: #EC7979;
+    height: 42px;
+    width: 135px;
+    cursor: pointer;
+}
