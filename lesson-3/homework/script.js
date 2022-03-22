@@ -4,10 +4,38 @@
     1. через ивент на каждую внопку
     2. через делегирование событий
 */
+const btnMinus = document.querySelector(".minus");
+const btnReset = document.querySelector(".reset");
+const btnPlus = document.querySelector(".plus");
+
+const btns = document.getElementById("actions");
+const count = document.querySelector(".count");
+
+// btns.addEventListener("click", (event) => {
+//   if (event.target.classList.value === "plus") {
+//       count.innerHTML = +count.innerHTML + 1;
+//   } else if (event.target.classList.value === 'minus') {
+//       count.innerHTML = +count.innerHTML - 1;
+//   } else if (event.target.classList.value === 'reset') {
+//       count.innerHTML = 0;
+//   }
+// });
+
+btnMinus.onclick = function () {
+  count.innerHTML = +count.innerHTML - 1;
+};
+btnPlus.onclick = function () {
+  count.innerHTML = +count.innerHTML + 1;
+};
+btnReset.onclick = function () {
+  count.innerHTML = 0;
+};
 
 /*
     Создать функцию createElement
-    Она должна принимать первым параметром имя тега,  вторым объект с свойствами и методами для для элемента (textContent, innerHtml, className, ...и тд)
+    Она должна принимать первым параметром имя тега,  вторым объект 
+    с свойствами и методами для для элемента 
+    (textContent, innerHtml, className, ...и тд)
 
     Причина
     нам нужно избавиться от длинной записи типа
@@ -28,7 +56,17 @@
 */
 
 const createElement = (tagName, options = {}) => {
-  // your code
+  const tag = document.createElement(tagName);
+  if(options.className) {
+    tag.className = options.className
+  };
+  if(options.textContent) {
+    tag.textContent = options.textContent
+  };
+  if(options.style) {
+    tag.style = options.style
+  };
+  return tag
 };
 
 const h1 = document.createElement("h1");
@@ -38,6 +76,7 @@ h1.style.fontSize = "48px";
 h1.style.textAlign = "center";
 
 document.body.append(h1);
+
 
 /*
     Реализовать модель туду листа
