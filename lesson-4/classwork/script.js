@@ -171,7 +171,9 @@ Todo.prototype.createTodo(newTodo, description){
   Todo.prototype.searchByTitle(title) {
      return this.list.filter((item) => item.title === title);
   }
+  saveTodo() {
+    const todo2 = new Todo(JSON.parse(localStorage.getItem("list")) ?? []);
+  };
 
 
 
-const todo2 = new Todo(JSON.parse(localStorage.getItem("list")) ?? []);
