@@ -11,53 +11,78 @@
     console.log(atm.getMoney(4500)); // 4X1000 1X500 
 */
 
+const form = document.querySelector("#form");
+const todos = document.querySelector("#todo");
+const inputText = document.querySelector("#text");
+const inputDescription = document.querySelector("#description");
+const btnSubmit = document.querySelector("#btnSubmit");
+const btnReset = document.querySelector("#btnReset");
+const btnsearchtitle = document.querySelector("#btnsearchtitle");
+const btnsearcdescription = document.querySelector("#btnsearcdescription");
 
-class Todo {
-    constructor(initialList) {
-        this.list = initialList;
-    }
-    get list() {
-        return this._list
-    }
+const generateId = (x = 999) => Math.random() * x;
+const todoItem = {
+    id: 1,
+    title: "title",
+    description: "description",
+    completed: false,
+};
 
-    set list(value) {
-        this._list = value;
-        localStorage.setItem('todo-list', JSON.stringify(value))
-    }
+function Todo(list) {
+    this.list = list;
+}
 
-    getById(id) {
-        return getId = this.list.find(person => person.id === id)
-    }
+Todo.prototype.getById = function(id) {
+    const getId = this.list.find(person => person.id === id)
+    return getId
+}
 
-    createTodo(newTodo) {
-        this.list = [...this.list, { id: Math.random(), ...newTodo }]
-    }
-    deleteTodo(id) {
-        this.list = this.list.filter(person => person.id !== id)
-    }
-    updateTodo(id, newTodo) {
-        this.list = this.list.map(todo => {
-            if (todo === id) {
-                return {...todo, ...newTodo }
-            }
-            return todo
-        })
-    }
-    searchByTitle(title) {
-        return this.list.filter(todo =>
-            todo.title.toLowerCase().includes(title.toLowerCase()))
-    }
-
-    sortByDescription() {
-        this.list.sort((a, b) => (a.description > b.description ? -1 : 1))
-    }
-    sortByTitle(title) {
-        this.list.sort((a, b) => (a.title > b.title ? -1 : 1))
+Todo.prototype.createTodo = function(newTodo) {
+    this.list.push = {
+        id: generateId(),
+        title: `${newTodo}`,
+        description: `${description}`,
+        completed: false,
     }
 }
 
+Todo.prototype.updateTodo = function(id, newTodo) {
+    this.list = this.list.map(todo => {
+        if (todo === id) {
+            return {...todo, ...newTodo }
+        }
+        return todo
+    })
+    return this.list
+}
 
+Todo.prototype.deleteTodo = function(id) {
+    this.list = this.list.filter(person => person.id !== id)
 
+}
 
-const todoList = new Todo([])
-todoList.createTodo({ title: 'dasfsd' });
+Todo.prototype.sortByTitle = function() {
+    const sortTitle = this.list.sort((a, b) => (a.title > b.title ? -1 : 1))
+}
+
+Todo.prototype.sortByDescription = function() {
+    const sortDescription = this.list.sort((a, b) => (a.description > b.description ? -1 : 1))
+}
+
+Todo.prototype.searchByTitle = function(title) {
+    const searchTitle = this.list.filter(element => element.title.includes(title))
+    return searchTitle
+}
+
+Todo.prototype.saveLocalStorage = function() {
+    localStorage.setItem('todo', JSON.stringify(newtodo))
+}
+
+function init() {
+    this.btnSubmit.onclick = () => {
+        this.todo.createTodo();
+        console.log(this.todo.list);
+    }
+}
+
+init()
