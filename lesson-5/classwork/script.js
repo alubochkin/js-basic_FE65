@@ -51,7 +51,13 @@ class Todo {
     sortByDescription() {
         this.list.sort((a, b) => (a.description > b.description ? -1 : 1))
     }
-
+    sortByTitle(title) {
+        this.list.sort((a, b) => (a.title > b.title ? -1 : 1))
+    }
 }
+
+
+
+
 const todoList = new Todo([])
 todoList.createTodo({ title: 'dasfsd' });
