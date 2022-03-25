@@ -57,7 +57,10 @@ body {
 }
 
 .forma .description {
+    padding: 5px;
     height: 140px;
+    background: rgba(253, 244, 244, 0.6);
+    border-radius: 5px;
 }
 
 .forma label {

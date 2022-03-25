@@ -11,15 +11,6 @@
     console.log(atm.getMoney(4500)); // 4X1000 1X500 
 */
 
-const form = document.querySelector("#form");
-const todos = document.querySelector("#todo");
-const inputText = document.querySelector("#text");
-const inputDescription = document.querySelector("#description");
-const btnSubmit = document.querySelector("#btnSubmit");
-const btnReset = document.querySelector("#btnReset");
-const btnsearchtitle = document.querySelector("#btnsearchtitle");
-const btnsearcdescription = document.querySelector("#btnsearcdescription");
-
 const generateId = (x = 999) => Math.random() * x;
 const todoItem = {
     id: 1,
@@ -78,11 +69,6 @@ Todo.prototype.saveLocalStorage = function() {
     localStorage.setItem('todo', JSON.stringify(newtodo))
 }
 
-function init() {
-    this.btnSubmit.onclick = () => {
-        this.todo.createTodo();
-        console.log(this.todo.list);
-    }
+function TodoForm() {
+    this.input
 }
-
-init()
