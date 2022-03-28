@@ -1,83 +1,147 @@
 * {
-    margin: 0px;
-    padding: 0px;
-    box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
 }
 
 .sort {
-    display: flex;
-    text-align: center;
-    gap: 15px;
-    margin: 30px 0 0 40px;
+  display: flex;
+  text-align: center;
+  gap: 15px;
+  margin: 30px 0 0 40px;
 }
 
 .sort .search {
-    width: 360px;
-    border-radius: 5px;
-    background: rgba(253, 244, 244, 0.6);
+  width: 360px;
+  border-radius: 5px;
+  background: rgba(253, 244, 244, 0.6);
 }
 
 body {
-    background: url(../classwork/fon.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 100%;
-    max-width: 1510px;
-    width: 100%;
+  background: url(../classwork/fon.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
+  max-width: 1510px;
+  width: 100%;
 }
 
 .wrapper {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    gap: 70px;
-    text-align: center;
-    margin-top: 60px;
-    transform: rotate(-10deg);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 70px;
+  text-align: center;
+  margin-top: 60px;
+  transform: rotate(-10deg);
 }
 
 .forma {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    text-align: end;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  text-align: end;
 }
 
 .todo {
-    width: 480px;
-    border-radius: 5px;
-    transform: rotate(5deg)
+  width: 480px;
+  border-radius: 5px;
+  transform: rotate(1deg);
 }
 
 .forma input {
-    width: 480px;
-    background: rgba(253, 244, 244, 0.6);
-    border-radius: 5px;
-    height: 42px;
+  width: 480px;
+  background: rgba(253, 244, 244, 0.6);
+  border-radius: 5px;
+  height: 42px;
+}
+
+.forma input.errorinput {
+  background: red;
 }
 
 .forma .description {
-    padding: 5px;
-    height: 140px;
-    background: rgba(253, 244, 244, 0.6);
-    border-radius: 5px;
+  padding: 5px;
+  height: 140px;
+  background: rgba(253, 244, 244, 0.6);
+  border-radius: 5px;
+}
+
+.forma textarea.errordescription {
+  background: red;
 }
 
 .forma label {
-    display: flex;
-    font-size: 30px;
-    color: #EC7979;
+  display: flex;
+  font-size: 30px;
+  color: #ec7979;
 }
 
 button {
-    border-radius: 5px;
-    font-family: 'Open Sans';
-    font-style: normal;
-    font-size: 15px;
-    line-height: 20px;
-    text-align: center;
-    background-color: #EC7979;
-    height: 42px;
-    width: 135px;
-    cursor: pointer;
+  border-radius: 5px;
+  font-family: "Open Sans";
+  font-style: normal;
+  font-size: 15px;
+  line-height: 20px;
+  text-align: center;
+  background-color: #ec7979;
+  height: 42px;
+  width: 135px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #00baf3;
+  color: #000;
+}
+
+.checkbox {
+  border-radius: 5px;
+  line-height: 20px;
+  text-align: center;
+  background-color: #ec7979;
+  height: 39px;
+  width: 40px;
+  cursor: pointer;
+}
+
+.ulka {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: flex-start;
+}
+
+.ulka .styleli {
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.wrapperH {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 460px;
+}
+
+.divWrapperButtons {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.checkboxLi {
+  text-decoration: line-through;
+}
+
+.btnDelete,
+.btnUpdate {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+}
+
+.ulka p {
+  text-align: start;
 }

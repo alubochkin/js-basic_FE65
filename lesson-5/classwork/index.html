@@ -10,18 +10,22 @@
 </head>
 <div class="sort">
     <input class="search">
-    <button id="btnsearchtitle">search title</button>
-    <button id="btnsearcdescription">search description</button>
+    <button id="btnsearchtitle">sort title</button>
+    <button id="btnsearcdescription">sort description</button>
 </div>
 
 <body>
     <div class="wrapper">
-        <div class="todo"></div>
+        <div class="todo">
+            <ul class="ulka"></ul>
+        </div>
         <form class="forma">
             <label for="text">task</label>
-            <input id="text" id="text">
+            <input id="text" class="text">
+            <span hidden="hidden" class="inputSpan">please enter text</span>
             <label for="text">description</label>
-            <textarea class="description" id="description"></textarea>
+            <textarea id="description" class="description"></textarea>
+            <span hidden="hidden" class="descriptionSpan">description must be less than 100 characters</span>
             <div class="buttonforwrap">
                 <button id="btnSubmit">Submit</button>
                 <button id="btnReset">Reset</button>
