@@ -1,0 +1,149 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+body {
+    background: url(../classwork/assets/background-main.jpg);
+    background-size: cover;
+    height: 100%;
+    width: 100%;
+    font-family: 'ARIAL';
+}
+.wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 20px;
+    text-align: center;
+    margin: 50px auto;
+    background: url(../classwork/assets/background-tasklist.jpg);
+    width: 1300px;
+    padding: 30px;
+}
+.list {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.sort {
+    display: flex;
+    text-align: center;
+    gap: 15px;
+    margin: 30px 0 0 40px;
+}
+
+.sort .search {
+    width: 360px;
+    border-radius: 2px;
+    background: rgba(255, 252, 252, 0.4);
+    font-size: 16px;
+    padding: 5px;
+    text-align: start;
+}
+
+.forma {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    text-align: start;
+}
+
+.todo {
+    margin-top: 20px;
+    width: 700px;
+    border-radius: 2px;
+    gap: 10px;
+}
+
+.task {
+    width: 480px;
+    background: rgba(255, 252, 252, 0.4);
+    border-radius: 2px;
+    height: 42px;
+    font-size: 16px;
+    padding: 5px;
+    text-align: start;
+}
+.errortask {
+    background: rgba(252, 4, 4, 0.4);
+}
+.description {
+    height: 140px;
+    width: 480px;
+    background: rgba(255, 252, 252, 0.4);
+    border-radius: 2px;
+    height: 42px;
+    font-size: 16px;
+    padding: 5px;
+    text-align: start;
+    height: 140px;
+    font-family: 'ARIAL';
+}
+.errordescription {
+    background: rgba(252, 4, 4, 0.4);
+}
+
+span {
+    font-size: 12px;
+    color: #f50a0a;
+}
+
+.forma label {
+    display: flex;
+    font-size: 24px;
+    color: #222121;
+}
+
+button {
+    border-radius: 2px;
+    font-family: 'ARIAL';
+    font-style: normal;
+    font-size: 12px;
+    line-height: 20px;
+    text-align: center;
+    background-color: #265f3e;
+    height: 42px;
+    width: 145px;
+    cursor: pointer;
+    color: #caeed9;
+}
+.ulki {
+    margin-top: 10px;
+}
+.lishka {
+    height: 80px;
+    display: flex;
+    margin-top: 10px;
+    padding: 5px 10px;
+    background: rgba(241, 102, 102, 0.4);
+    text-align: center;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+.lishka_done {
+    height: 80px;
+    display: flex;
+    margin-top: 10px;
+    padding: 5px 10px;
+    background: rgba(102, 241, 120, 0.4);
+    text-align: center;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+.btnDelete, .btnDone, .btnEdit {
+    width: 50px;
+}
+.divButtons {
+    display: flex;
+    width: 170px;
+    justify-content: space-between;
+}
+.divTitle {
+    width: 500px;
+    gap: 10px;
+
+}

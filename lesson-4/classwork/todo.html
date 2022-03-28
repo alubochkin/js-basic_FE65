@@ -6,6 +6,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="style.css">
   </head>
-  <body></body>
+  <body>
+      <div class="wrapper">
+        <div class="list">
+        <div class="sort">
+          <input class="search">
+          <button id="btnsearchtitle">SEARCH TITLE</button>
+          <button id="btnsearcdescription">SEARCH DESCRIPTION</button>
+      </div>
+      <div class="todo">
+        <ul class="ulki"></ul>
+      </div>
+    </div>
+          <form class="forma">
+              <label for="text">TASK</label>
+              <input id="text" class="task">
+              <span class="taskSpan" hidden="hidden"></span>
+              <label for="text">Description</label>
+              <textarea class="description" id="description"></textarea>
+              <span class="descriptionSpan" hidden="hidden"></span>
+              <div class="buttonforwrap">
+                  <button id="btnSubmit">Submit</button>
+                  <button id="btnReset">Reset</button>
+              </div>
+          </form>
+      </div>
+  </body>
   <script src="todo.js"></script>
 </html>
