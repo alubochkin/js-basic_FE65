@@ -20,7 +20,6 @@ const todo = {
             id: Math.floor(Math.random() * 100),
             title,
             description,
-            completed: false,
             checked: false,
         });
     },
@@ -59,11 +58,11 @@ const search = document.querySelector('.search')
 
 const validation = (input, textArea) => {
     let error = {};
-    if (input.length === 0 || input.length > 100) {
-        error.input = 'The length of the text must be between 1 and 99 characters'
+    if (input.length === 0) {
+        error.input = 'required'
     }
-    if (textArea.length < 5) {
-        error.description = 'min length 5'
+    if (textArea.length > 100) {
+        error.description = 'max length 100'
     }
     return Object.keys(error).length ? error : null
 }
@@ -124,6 +123,7 @@ const renderToDo = (todList) => {
             event.preventDefault()
             todo.deleteTodo(item.id)
             renderToDo(todo.list)
+            
         })
 
         const btnUpdate = document.createElement('button')
@@ -170,8 +170,9 @@ const renderToDo = (todList) => {
             li.append(p)
         }
         ul.append(li)
+        
     });
-
+    localStorage.setItem('todoList', JSON.stringify(todo.list))
 }
 todo.list = JSON.parse(localStorage.getItem('todoList')) ?? []
 renderToDo(JSON.parse(localStorage.getItem('todoList')) ?? [])

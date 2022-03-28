@@ -96,10 +96,6 @@ button:hover {
 }
 
 .checkbox {
-  border-radius: 5px;
-  line-height: 20px;
-  text-align: center;
-  background-color: #ec7979;
   height: 39px;
   width: 40px;
   cursor: pointer;
