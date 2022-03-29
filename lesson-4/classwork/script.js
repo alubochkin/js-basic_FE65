@@ -72,7 +72,7 @@ input.addEventListener("input", function () {
     реллизовать сохранение todo.list в localStorage
     ** реализовать функцию конструктор которая будет возвращаться объект todo
 */
-
+/*
 const todoItem = {
   id: 1,
   title: "title",
@@ -93,16 +93,8 @@ const todo = {
       completed: false,
     });
   },
-  updateTodo(id, newTodo, description) {
-    let toDoIndex = this.list.findIndex((item) => item.id === id);
-    ///value тут будет
-    newTodo = {
-      id: this.getById(),
-      title: `${newTodo}`,
-      description: `${description}`,
-      completed: false,
-    };
-    this.list.splice(toDoIndex, 1, newTodo);
+  updateTodo(newTodo) {
+  this list = this.list[index] = {...this.list[index], ...newTodo}
   },
   deleteTodo(id) {
     let toDoIndex = this.list.findIndex((item) => item.id === id);
@@ -117,7 +109,7 @@ const todo = {
     this.list.sort((a, b) => (a.description > b.description ? 1 : -1));
   },
   searchByTitle(title) {
-    this.list.filter((item) => item.title === title);
+    return this.list.filter((todo) => todo.title.toLowerCase().includes(title.toLowerCase());
   },
   saveTodo() {
     localStorage.setItem("Todo", this.list);
@@ -130,50 +122,41 @@ todo.updateTodo();
 todo.deleteTodo();
 todo.sortByTitle();
 todo.sortByDescription();
-todo.searchByTitle();
+todo.searchByTitle();*/
+
+const todo = new Todo([]);
 
 function Todo(list) {
-this.list = list;
+  this.list = list;
 }
 Todo.prototype.getById = function (id) {
   return this.list.find((todo) => todo.id === id);
 };
-Todo.prototype.createTodo(newTodo, description){
-  this.list.push({
-    id: this.getById(),
-    title: `${newTodo}`,
-    description: `${description}`,
-    completed: false,
-  })
+
+Todo.prototype.createTodo = function (newTodo) {
+  this.list = this.list.concat({ id: Math.random(), ...newTodo });
 };
-  Todo.prototype.updateTodo(id, newTodo, description) {
-    let toDoIndex = this.list.findIndex((item) => item.id === id);
-    newTodo = {
-      id: this.getById(),
-      title: `${newTodo}`,
-      description: `${description}`,
-      completed: false,
-    };
-    this.list.splice(toDoIndex, 1, newTodo);
-  };
-  Todo.prototype.deleteTodo(id) {
-    let toDoIndex = this.list.findIndex((item) => item.id === id);
-    if (toDoIndex !== -1) {
-      this.list.splice(toDoIndex, 1);
-    }
-  };
-  Todo.prototype.sortByTitle() {
-    this.list.sort((a, b) => (a.title > b.title ? 1 : -1));
-  }
-  Todo.prototype.sortByDescription() {
-    this.list.sort((a, b) => (a.description > b.description ? 1 : -1));
-  }
-  Todo.prototype.searchByTitle(title) {
-     return this.list.filter((item) => item.title === title);
-  }
-  saveTodo() {
-    const todo2 = new Todo(JSON.parse(localStorage.getItem("list")) ?? []);
-  };
+Todo.prototype.updateTodo = function (id, newTodo) {
+  this.list = this.list.map((todo) =>
+    todo.id === id ? { ...todo, ...newTodo } : todo
+  );
+};
 
+Todo.prototype.deleteTodo = function (id) {
+  this.list = this.list.filter((todo) => todo.id !== id);
+};
 
-
+Todo.prototype.sortByTitle = function () {
+  this.list.sort((a, b) => (a.title > b.title ? 1 : -1));
+};
+Todo.prototype.sortByDescription = function () {
+  this.list.sort((a, b) => (a.description > b.description ? 1 : -1));
+};
+Todo.prototype.searchByTitle = function (title) {
+  return this.list.filter((todo) =>
+    todo.title.toLowerCase().includes(title.toLowerCase())
+  );
+};
+Todo.prototype.saveTodo = function () {
+  const todo2 = new Todo(JSON.parse(localStorage.getItem("list")) ?? []);
+};
