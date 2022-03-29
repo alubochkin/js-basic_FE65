@@ -3,6 +3,7 @@
 // 2. при удачном выполнении запроса должен выводиться список юзеров (renderUsers)
 // 3. запрос не отработал как надо, показываем ошибку (renderError)
 const rootDiv = document.getElementById("root");
+let results = 5;
 
 const renderLoading = () => {
   rootDiv.innerHTML = '<p class="loader">Loading...</p>';
@@ -29,7 +30,14 @@ const renderUsers = (users) => {
     `;
   });
 
-  rootDiv.append(ul);
+  const buttonShowMore = document.createElement("button");
+  buttonShowMore.textContent = "Show More";
+  buttonShowMore.onclick = () => {
+    results += 5;
+    fetchUsers(`https://randomuser.me/api/?results=${results}`);
+  };
+
+  rootDiv.append(ul, buttonShowMore);
 };
 
 const fetchUsers = (url) => {
@@ -45,4 +53,4 @@ const fetchUsers = (url) => {
     });
 };
 
-fetchUsers("https://randomuser.me/api/?results=5");
+fetchUsers(`https://randomuser.me/api/?results=${results}`);
