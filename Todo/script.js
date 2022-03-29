@@ -128,6 +128,7 @@ const renderTodoList = (todo) => {
 
   todo.forEach((todo) => {
     const todoTask = document.createElement("div");
+    todoTask.id = todo.id;
     todoTask.classList.add("todo-task");
     const taskTitle = createTaskTitle(todo);
     const taskBtns = createTaskBtns();
