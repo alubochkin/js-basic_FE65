@@ -11,10 +11,6 @@
     console.log(atm.getMoney(4500)); // 4X1000 1X500 
 */
 
-class ATM {
-
-}
-
 class Todo {
     constructor(initialList) {
         this.list = initialList
