@@ -10,3 +10,5 @@
     console.log(atm.getMoney(11500)); // 2X5000 1X1000 1X500
     console.log(atm.getMoney(4500)); // 4X1000 1X500 
 */
+
+const input = document.querySelector("input");
