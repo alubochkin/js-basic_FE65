@@ -68,13 +68,51 @@ console.log(array1.uniq());
 //   completed: false,
 // };
 
-const todo = {
-  list: [todoItem],
-  getById(id) {},
-  createTodo(newTodo) {},
-  updateTodo(id, newTodo) {},
-  deleteTodo(id) {},
-  sortByTitle() {},
-  sortByDescription() {},
-  searchByTitle(title) {},
-};
+// const todo = {
+//   list: [todoItem],
+//   getById(id) {},
+//   createTodo(newTodo) {},
+//   updateTodo(id, newTodo) {},
+//   deleteTodo(id) {},
+//   sortByTitle() {},
+//   sortByDescription() {},
+//   searchByTitle(title) {},
+// };
+
+class Todo {
+  constructor (initialList){
+    this.list = initialList
+  }
+
+  get list() {
+    return this._list;
+  }
+
+  set list(value){
+    console.log("set");
+    this._list = value;
+    localStorage.setItem("todo-list", JSON.stringify(value));
+  }
+
+  createTodo(newTodo) {
+    // this.list = this.list.concat({id: Math.random(), ...newTodo})
+    this.list = [...this.list, {id: Math.random(), ...newTodo, completed: false}]
+  }
+
+  updateTodo(id, newTodo) {
+      this.list = this.list.map((item) => 
+         item.id === id ? {...todo, ...newTodo} : todo
+    );
+  }
+  deleteTodo(id) {
+    this.list = this.list.filter((todo) => todo.id !== id)
+  }
+
+  searchByTitle(title) {
+    return this.list.filter((todo) => 
+      todo.title.toLowerCase().includes(title.toLowerCase()))
+  }
+}
+const todoList = new Todo([])
+todoList.createTodo(["title"])
+console.log(todoList);
