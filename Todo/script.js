@@ -4,16 +4,21 @@ const todo = {
     return this.list.find((item) => item.id === id);
   },
   createTodo(title, description) {
-    this.list.push({
-      id: Math.floor(Math.random() * 100),
-      title,
-      description,
-      completed: false,
-    });
+    this.list = [
+      ...this.list,
+      {
+        id: Math.floor(Math.random() * 100),
+        title,
+        description,
+        completed: false,
+      },
+    ];
   },
   updateTodo(id, newTodo) {
-    let task = this.list.find((item) => item.id === id);
-    task = [...task, ...newTodo];
+
+    this.list = this.list.map((todo) => {
+      todo.id === id ? { ...todo, newTodo } : todo;
+    });
   },
   deleteTodo(id) {
     this.list = this.list.filter((item) => item.id !== id);
@@ -25,13 +30,18 @@ const todo = {
     this.list.sort((a, b) => (a.description > b.description ? 1 : -1));
   },
   searchByTitle(title) {
-    const elem = this.list.filter((item) => item.title.includes(title)); //исправить из функции конструктора
-    console.log(elem);
+    let task = this.list.filter((todo) =>
+      todo.title.toLowerCase.includes(title.toLowerCase())
+    );
+    return task
   },
   saveToDo() {
     localStorage.setItem("todoList", JSON.stringify(this.list));
   },
 };
+
+
+
 
 const btnSubmit = document.querySelector(".btn-submit");
 const inputTitle = document.querySelector(".input-title");
@@ -42,6 +52,8 @@ const todoList = document.querySelector(".todo-list");
 const btnSortTitle = document.querySelector('.btn-sort-title');
 const btnSortDescription = document.querySelector('.btn-sort-description');
 const inputSearch = document.querySelector('.input-search');
+
+
 
 const validation = (input, description) => {
   let error = {};
@@ -100,10 +112,13 @@ const createTaskBtns = () => {
   taskBtns.classList.add("task-btns");
   const btnDone = document.createElement("button");
   btnDone.textContent = "Done";
+  btnDone.classList.add('btn-task-done');
   const btnUpDate = document.createElement("button");
   btnUpDate.textContent = "Update";
+  btnUpDate.classList.add('btn-task-update');
   const btnDel = document.createElement("button");
   btnDel.textContent = "Delete";
+  btnDel.classList.add('btn-task-delete');
   taskBtns.append(btnDone, btnUpDate, btnDel);
   return taskBtns;
 };
@@ -121,6 +136,13 @@ const renderTodoList = (todo) => {
   });
 };
 
+
+// // const taskBtns = document.querySelector(".task-btns");
+// const btnTaskDone = document.querySelector(".btn-task-done");
+// const btnTaskUpdate = document.querySelector(".btn-task-update");
+// const btnTaskDelete = document.querySelector(".btn-task-delete");
+
+
 btnSortTitle.addEventListener('click', () =>{
 todo.sortByTitle()
 renderTodoList(todo.list)
@@ -131,8 +153,11 @@ btnSortDescription.addEventListener('click', () =>{
   renderTodoList(todo.list)
 })
 
-inputSearch.addEventListener('click', () =>{
-  todo.searchByTitle()
-})
+// inputSearch.addEventListener('input', (event) =>{
+// event.preventDefault()
+// renderTodoList(todo.searchByTitle(event.target.value))
+// })
+
+
 
 renderTodoList(JSON.parse(localStorage.getItem("todoList")) ?? []);
