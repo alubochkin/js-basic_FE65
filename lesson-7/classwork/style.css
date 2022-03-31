@@ -1,0 +1,27 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: pink;
+    padding: 50px;
+}
+
+.users {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.users__card {
+    padding: 10px;
+    border: 3px solid black;
+    border-radius: 8px;
+}
+
+.users__card:hover {
+    background-color: cornflowerblue;
+    transition: 0.3s;
+}
