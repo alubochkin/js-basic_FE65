@@ -2,3 +2,51 @@
 // 1. пока выполняется запрос должен отображаться лоадер (renderLoading)
 // 2. при удачном выполнении запроса должен выводиться список юзеров (renderUsers)
 // 3. запрос не отработал как надо, показываем ошибку (renderError)
+
+let divWrap = document.querySelector(".div-wrap");
+let results = 5;
+const renderLoading = () => {
+  divWrap.innerHTML = '<p class="loading">Loading</p>';
+};
+const renderError = () => {
+  divWrap.innerHTML = '<p class="error">Error</p>';
+};
+const renderUsers = (users) => {
+  divWrap.innerHTML = "";
+  const ul = document.createElement("ul");
+  ul.className = "users";
+
+  users.forEach((user) => {
+    ul.innerHTML += `
+    <li class="user"> 
+    Name:${user.name.title} ${user.name.first} ${user.name.last} 
+    <br>
+    Email: ${user.email}
+    <br>
+    Gender: ${user.gender}</li>
+    
+    `;
+  });
+  const btnMore = document.createElement("button");
+  btnMore.textContent = "Show More";
+  btnMore.onclick = () => {
+    results += 5;
+    fetchUsers(`https://randomuser.me/api/?results=${results}`);
+  };
+
+  divWrap.append(ul, btnMore);
+};
+
+const fetchUsers = (url) => {
+  renderLoading();
+
+  fetch(url)
+    .then((resp) => resp.json())
+    .then((data) => {
+      renderUsers(data.results);
+    })
+
+    .catch(() => renderError());
+};
+
+fetchUsers(`https://randomuser.me/api/?results=${results}`);

@@ -1,0 +1,17 @@
+.user {
+  border: 2px solid rgb(204, 0, 255);
+}
+
+.users {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  list-style-type: none;
+  padding-left: 0;
+}
+.div-wrap {
+  box-sizing: border-box;
+  width: 50%;
+  margin: 0 auto;
+}
