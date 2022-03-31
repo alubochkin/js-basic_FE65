@@ -72,7 +72,7 @@ input.addEventListener("input", function () {
     реллизовать сохранение todo.list в localStorage
     ** реализовать функцию конструктор которая будет возвращаться объект todo
 */
-/*
+
 const todoItem = {
   id: 1,
   title: "title",
@@ -93,8 +93,10 @@ const todo = {
       completed: false,
     });
   },
-  updateTodo(newTodo) {
-  this list = this.list[index] = {...this.list[index], ...newTodo}
+  updateTodo(id, newTodo) {
+    this.list = this.list.map((todo) =>
+      todo.id === id ? { ...todo, ...newTodo } : todo
+    );
   },
   deleteTodo(id) {
     let toDoIndex = this.list.findIndex((item) => item.id === id);
@@ -109,7 +111,9 @@ const todo = {
     this.list.sort((a, b) => (a.description > b.description ? 1 : -1));
   },
   searchByTitle(title) {
-    return this.list.filter((todo) => todo.title.toLowerCase().includes(title.toLowerCase());
+    return this.list.filter((todo) =>
+      todo.title.toLowerCase().includes(title.toLowerCase())
+    );
   },
   saveTodo() {
     localStorage.setItem("Todo", this.list);
@@ -122,9 +126,9 @@ todo.updateTodo();
 todo.deleteTodo();
 todo.sortByTitle();
 todo.sortByDescription();
-todo.searchByTitle();*/
+todo.searchByTitle();
 
-const todo = new Todo([]);
+/*const todo = new Todo([]);
 
 function Todo(list) {
   this.list = list;
@@ -159,4 +163,4 @@ Todo.prototype.searchByTitle = function (title) {
 };
 Todo.prototype.saveTodo = function () {
   const todo2 = new Todo(JSON.parse(localStorage.getItem("list")) ?? []);
-};
+};*/
