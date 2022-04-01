@@ -9,18 +9,18 @@
 */
 <<<<<<< HEAD
 
-let timer = (a, b) => {
-    if (a === b) {
-        console.log('таймер остановился');
-        return
-    }
-    setTimeout(() => {
-        console.log(a)
+// let timer = (a, b) => {
+//     if (a === b) {
+//         console.log('таймер остановился');
+//         return
+//     }
+//     setTimeout(() => {
+//         console.log(a)
 
-        timer(a + 1, b);
-    }, 1000)
-}
-timer(1, 5)
+//         timer(a + 1, b);
+//     }, 1000)
+// }
+// timer(1, 5)
 
 
 =======
@@ -48,11 +48,12 @@ function timer(a, b) {
    Создать функцию с именем compact
    Функция должна очищать массив от значений: false, undefined, "", 0, null.
 */
-let compact = (args) => {
-    let array = args.filter((item) => Boolean(item))
-    return array
-}
+// let compact = (args) => {
+//     let array = args.filter((item) => Boolean(item))
+//     return array
+// }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 console.log(compact([null, 7, false, 3]));
 =======
@@ -63,6 +64,9 @@ function compact(arr) {
 
 compact([false, 2, 0, 54, undefined])
 >>>>>>> 646fa09eba3636bba3e6e8ddc91695a877e33ecc
+=======
+// console.log(compact([null, 7, false, 3]));
+>>>>>>> 781a7f7dc4ffe9ae3b75ff198fe0556fd84eb790
 /*
     Создать объект user вида 
     {
@@ -81,6 +85,7 @@ compact([false, 2, 0, 54, undefined])
 
     МЕТОДЫ ДОЛЖНЫ РАБОТАТЬ С this
 */
+<<<<<<< HEAD
 let user = {
 <<<<<<< HEAD
     name: 'Artur',
@@ -122,6 +127,48 @@ user.addHobby("newHobby3")
 user.showHobby()
 user.clearKnowledge()
 user.clearHobbies()
+=======
+// let user = {
+//     name: 'Artur',
+//     lastName: 'Kuchinski',
+//     age: '29',
+//     knowledge: [],
+//     hobbies: [],
+//     addKnowledge(newKnowledge) {
+//         this.knowledge.push(newKnowledge)
+//     },
+//     showKnowledge() {
+//         console.log(this.knowledge);
+//     },
+//     addHobby(newHobby) {
+//         this.hobbies.unshift(newHobby)
+//     },
+//     showHobby() {
+//         console.log(this.hobbies);
+//     },
+//     clearKnowledge() {
+//         this.knowledge = [];
+//     },
+//     clearHobbies() {
+//         this.hobbies = [];
+//     },
+//     showInfo() {
+//         const info = `${this.name} ${this.lastName} ${this.age} ${this.knowledge} ${this.hobbies}`
+//         console.log(info)
+//     },
+// }
+// user.showInfo()
+// user.addKnowledge("newKnowledge")
+// user.addKnowledge("newKnowledge2")
+// user.addKnowledge("newKnowledge3")
+// user.showKnowledge()
+// user.addHobby("newHobby")
+// user.addHobby("newHobby2")
+// user.addHobby("newHobby3")
+// user.showHobby()
+// user.clearKnowledge()
+// user.clearHobbies()
+>>>>>>> 781a7f7dc4ffe9ae3b75ff198fe0556fd84eb790
 
 
 =======
@@ -178,6 +225,7 @@ const users = {
         { id: 2, name: "Victor" },
         { id: 3, name: "Kate" },
     ],
+<<<<<<< HEAD
     findById(id) {},
     findByName(name) {},
     filterById(id) {},
@@ -219,3 +267,41 @@ users.filterByName('Vova')
 users.getAllNames()
 users.getAllIds()
 >>>>>>> 646fa09eba3636bba3e6e8ddc91695a877e33ecc
+=======
+    findById(id) {
+        const elementId = this.list.find(person => person.id === id)
+        return elementId
+    },
+    findByName(name) {
+        const names = this.list.find(person => person.name === name)
+        return names
+    },
+    filterById(id) {
+        const usersId = this.list.filter(person => person.id >= id)
+        return usersId
+    },
+    filterByName(name) {
+        const filterName = this.list.filter(person => person.name === name)
+        return filterName
+    },
+    getAllNames() {
+        const allNames = this.list.map(person => {
+            return person.name
+        })
+        return allNames
+    },
+    getAllIds() {
+        const allId = this.list.map(person => {
+            return person.id
+        })
+        return allId
+    },
+};
+
+console.log(users.findById(0));
+console.log(users.findByName("Vova"));
+console.log(users.filterById(2));
+console.log(users.filterByName("Kate"));
+console.log(users.getAllNames());
+console.log(users.getAllIds());
+>>>>>>> 781a7f7dc4ffe9ae3b75ff198fe0556fd84eb790
