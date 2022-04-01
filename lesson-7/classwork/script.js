@@ -50,3 +50,29 @@ const fetchUsers = (url) => {
 };
 
 fetchUsers(`https://randomuser.me/api/?results=${results}`);
+async function fetchUsers(url) {
+  renderLosding();
+  try {
+    const res = await fetch(url);
+    const data = await res.json();
+    renderUsers(data.results);
+  } catch (err) {
+    renderError();
+  } finally {
+    console.log("finally");
+  }
+}
+
+/*async function asyncFunc() {
+  try {
+    const success = await successPromise();
+    console.log(success); // success
+
+    const err = await errorPromise(); // в errorPromise ошибка, код переходит в блок catch
+    console.log(err);
+  } catch (error) {
+    console.log(error); // error
+  } finally {
+    console.log("finally");
+  }
+}*/
