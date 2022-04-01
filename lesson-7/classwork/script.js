@@ -37,14 +37,30 @@ const renderUsers = (users) => {
     })  
 }
 
-const fetchUsers = (url) => {
-    renderLoading()
+// const fetchUsers = (url) => {
+//     renderLoading()
 
-    fetch(url)
-        .then((res) => res.json())
-        .then((data) => renderUsers(data.results))
-        .catch((error) => renderError(error))
-        .finally(() => loadingEl.textContent = '')
+//     fetch(url)
+//         .then((res) => res.json())
+//         .then((data) => renderUsers(data.results))
+//         .catch((error) => renderError(error))
+//         .finally(() => loadingEl.textContent = '')
+// }
+
+async function fetchUsers(url) {
+    renderLoading()
+    
+    try { 
+        const res = await fetch(url)
+        const data = await res.json()
+        renderUsers(data.results)
+    }
+    catch (err) {
+        renderError(err)
+    }
+    finally {
+       console.log('Finish')
+    }
 }
 
 fetchUsers(`https://randomuser.me/api/?results=${num}`)
