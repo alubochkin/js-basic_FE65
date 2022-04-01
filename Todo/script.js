@@ -66,6 +66,15 @@ const validation = (input, description) => {
   return Object.keys(error).length ? error : null;
 };
 
+removeErrTitles = () => {
+  spanTitle.hidden = true;
+  spanDescription.hidden = true;
+  inputTitle.classList.remove("err-input-title");
+  textareaDescription.classList.remove("err-textarea-description");
+  spanTitle.textContent = "";
+  spanDescription.textContent = "";
+};
+
 const createTaskTitle = (todo) => {
   const taskTitle = document.createElement("div");
   const h2 = document.createElement("h2");
@@ -106,24 +115,21 @@ btnSubmit.addEventListener("click", (event) => {
 
   const err = validation(inputTitle.value, textareaDescription.value);
 
-  if (!err) {   
-
-    if(editId){
-      todo.updateTodo(editId, {title:inputTitle.value, description:textareaDescription.value})
-     editId = null;
-    }else{
+  if (!err) {
+    if (editId) {
+      todo.updateTodo(editId, {
+        title: inputTitle.value,
+        description: textareaDescription.value,
+      });
+      editId = null;
+    } else {
       todo.createTodo(inputTitle.value, textareaDescription.value);
     }
     todo.saveToDo();
 
     inputTitle.value = "";
     textareaDescription.value = "";
-    spanTitle.hidden = true;
-    spanDescription.hidden = true;
-    inputTitle.classList.remove("err-input-title");
-    textareaDescription.classList.remove("err-textarea-description");
-    spanTitle.textContent = "";
-    spanDescription.textContent = "";
+    removeErrTitles();
 
     renderTodoList(todo.list);
   }
