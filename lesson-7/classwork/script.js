@@ -30,29 +30,44 @@ const renderUser = (users) => {
         console.log(user);
     });
     wrapper.append(ul)
-    const btnSubmit = document.createElement('button')
-    btnSubmit.textContent = 'btn';
-    wrapper.append(btnSubmit)
-    btnSubmit.addEventListener('click', () => {
-    current += 5
-    fetchUsers(`https://randomuser.me/api/?results=${current}`)
+        const btnSubmit = document.createElement('button')
+        btnSubmit.textContent = 'btn';
+        wrapper.append(btnSubmit)
+        btnSubmit.addEventListener('click', () => {
+        current += 5
+        fetchUsers(`https://randomuser.me/api/?results=${current}`)
 })
 }
 
-const fetchUsers = (url) => {
-    renderLoading()
+// const fetchUsers = (url) => {
+//     renderLoading()
 
-    fetch(url)
-    .then((res) => res.json())
-    .then((data) => {
-        renderUser(data.results)
-    })
-    .catch(() => {
-        renderEror()
-    })
+//     fetch(url)
+//     .then((res) => res.json())
+//     .then((data) => {
+//         renderUser(data.results)
+//     })
+//     .catch(() => {
+//         renderEror()
+//     })
     
-};
+// };
 
 
+const fetchUsers = async (url) => {
+    renderLoading()
+    try {
+    
 
-fetchUsers(`https://randomuser.me/api/?results=${current}`)
+      const res = await fetch(url);
+      const data = await res.json();
+
+      renderUser(data.results)
+
+    } catch (error) {
+      renderEror()
+  }
+}
+  
+ 
+fetchUsers(`https://randomuser.me/api/?results=${current}`);
