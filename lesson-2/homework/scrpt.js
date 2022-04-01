@@ -24,16 +24,16 @@
 const generateId = (x = 999) => Math.random() * x;
 
 const testTodo = {
-  id: generateId(),
-  title: "Название задания",
-  description: null,
-  completed: false,
+    id: generateId(),
+    title: "Название задания",
+    description: null,
+    completed: false,
 };
 
 const todo = {
-  list: [testTodo],
-  getTodo(id) {},
-  createTodo(title, description) {},
-  updateTodo(id, newTodo) {},
-  deleteTodo(id) {},
+    list: [testTodo],
+    getTodo(id) {},
+    createTodo(title, description) {},
+    updateTodo(id, newTodo) {},
+    deleteTodo(id) {},
 };

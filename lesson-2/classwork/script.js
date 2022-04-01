@@ -13,30 +13,41 @@
     2. сравнить a, b если === return
     3. setTimeout(() => { timer(a + 1, b) }, 1000)
 */
+const timer = (a, b) => {
+    if (a === b) {
+        console.log("Таймер остановился");
+        return;
+    }
+    setTimeout(() => { timer(a + 1, b) }, 1000)
+    console.log(a);
+}
+timer(1, 10);
 
 /*
    Создать функцию с именем compact
    Функция должна очищать массив от значений: false, undefined, "", 0, null.
 */
+const compact = () => {
 
-/*
-    Создать объект user вида 
-    {
-        name: 'SomeName',
-        lastName: 'SomeLastName',
-        age: 'SomeAge',
-        knowledge: [],
-        hobbies: [],
     }
-    Добавить в него методы
-    showInfo() {} показывает информацию о usere
-    addKnowledge(newKnowledge) {} добавляет newKnowledge в конец массива knowledge
-    addHobby(newHobby) {} добавляет newHobby в начало массива hobies
-    clearKnowledge() {} очищает массив hobbies
-    clearHobbies() {} очищает массив hobbies
+    /*
+        Создать объект user вида 
+        {
+            name: 'SomeName',
+            lastName: 'SomeLastName',
+            age: 'SomeAge',
+            knowledge: [],
+            hobbies: [],
+        }
+        Добавить в него методы
+        showInfo() {} показывает информацию о usere
+        addKnowledge(newKnowledge) {} добавляет newKnowledge в конец массива knowledge
+        addHobby(newHobby) {} добавляет newHobby в начало массива hobies
+        clearKnowledge() {} очищает массив hobbies
+        clearHobbies() {} очищает массив hobbies
 
-    МЕТОДЫ ДОЛЖНЫ РАБОТАТЬ С this
-*/
+        МЕТОДЫ ДОЛЖНЫ РАБОТАТЬ С this
+    */
 
 /*
     Дан объект users
@@ -51,17 +62,17 @@
     МЕТОДЫ ДОЛЖНЫ РАБОТАТЬ С this
 */
 
-const users = {
-  list: [
-    { id: 0, name: "Vlad" },
-    { id: 1, name: "Vova" },
-    { id: 2, name: "Victor" },
-    { id: 3, name: "Kate" },
-  ],
-  findById(id) {},
-  findByName(name) {},
-  filterById(id) {},
-  filterByName(name) {},
-  getAllNames() {},
-  getAllIds() {},
-};
+// const users = {
+//     list: [
+//         { id: 0, name: "Vlad" },
+//         { id: 1, name: "Vova" },
+//         { id: 2, name: "Victor" },
+//         { id: 3, name: "Kate" },
+//     ],
+//     findById(id) {},
+//     findByName(name) {},
+//     filterById(id) {},
+//     filterByName(name) {},
+//     getAllNames() {},
+//     getAllIds() {},
+// };

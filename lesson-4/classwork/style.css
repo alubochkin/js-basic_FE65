@@ -1,0 +1,62 @@
+div {
+    border: 1px solid #000;
+}
+
+.form {
+    display: flex;
+    background: rgb(252, 252, 127);
+}
+
+.form-leigth {
+    width: 500px;
+    height: 500px;
+    background: rgb(169, 173, 223);
+    margin: 20px 20px 20px 20px;
+}
+
+.form-right {
+    width: 400px;
+    height: 300px;
+    background: rgb(236, 169, 209);
+    margin: 100px 20px 20px 20px;
+}
+
+.form-title {
+    height: 50px;
+    width: 400px;
+    margin: 30px 10px 30px 10px;
+}
+
+.todo {
+    height: 300px;
+    width: 300px;
+    margin: 0px auto;
+}
+
+#leight-text {
+    margin: 15px;
+    width: 250px;
+}
+
+#right-text {
+    width: 300px;
+    height: 100px;
+    margin: 20px 20px;
+}
+
+#right-title {
+    margin: 20px 20px;
+    height: 20px;
+    width: 300px;
+}
+
+.right-ok {
+    margin: 20px 0px 20px 120px;
+    height: 30px;
+    width: 50px;
+}
+
+.right-close {
+    height: 30px;
+    width: 50px;
+}

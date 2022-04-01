@@ -1,5 +1,21 @@
 button {
-  padding: 12px;
-  font-size: 18px;
-  border: none;
+    padding: 12px;
+    font-size: 18px;
+    border: none;
+}
+
+.styleRed {
+    color: red;
+    font-size: 50px;
+    background: #000;
+}
+
+.addP {
+    font-size: 36px;
+    color: rgb(161, 47, 255);
+    background: yellow;
+}
+
+.addUl {
+    color: hotpink;
 }
