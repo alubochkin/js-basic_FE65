@@ -15,9 +15,8 @@ const todo = {
     ];
   },
   updateTodo(id, newTodo) {
-
     this.list = this.list.map((todo) => {
-      todo.id === id ? { ...todo, ...newTodo } : todo;
+      return todo.id === id ? { ...todo, ...newTodo } : todo;
     });
   },
   deleteTodo(id) {
@@ -33,15 +32,12 @@ const todo = {
     let task = this.list.filter((todo) =>
       todo.title.toLowerCase().includes(title.toLowerCase())
     );
-    return task
+    return task;
   },
   saveToDo() {
     localStorage.setItem("todoList", JSON.stringify(this.list));
   },
 };
-
-
-
 
 const btnSubmit = document.querySelector(".btn-submit");
 const inputTitle = document.querySelector(".input-title");
@@ -49,11 +45,13 @@ const textareaDescription = document.querySelector(".textarea-description");
 const spanTitle = document.querySelector(".err-span-title");
 const spanDescription = document.querySelector(".err-span-description");
 const todoList = document.querySelector(".todo-list");
-const btnSortTitle = document.querySelector('.btn-sort-title');
-const btnSortDescription = document.querySelector('.btn-sort-description');
-const inputSearch = document.querySelector('.input-search');
+const btnSortTitle = document.querySelector(".btn-sort-title");
+const btnSortDescription = document.querySelector(".btn-sort-description");
+const inputSearch = document.querySelector(".input-search");
 
+const taskBtns = document.querySelector(".task-btns");
 
+let editId;
 
 const validation = (input, description) => {
   let error = {};
@@ -67,14 +65,57 @@ const validation = (input, description) => {
 
   return Object.keys(error).length ? error : null;
 };
+
+const createTaskTitle = (todo) => {
+  const taskTitle = document.createElement("div");
+  const h2 = document.createElement("h2");
+  h2.textContent = todo.title;
+
+  const p = document.createElement("p");
+  p.textContent = todo.description;
+  taskTitle.append(h2, p);
+  return taskTitle;
+};
+const createTaskBtns = (todo) => {
+  const taskBtns = document.createElement("div");
+  taskBtns.classList.add("task-btns");
+
+  const btnDone = document.createElement("button");
+  btnDone.textContent = "Done";
+  btnDone.classList.add("btn-task-done");
+
+  const btnUpDate = document.createElement("button");
+  btnUpDate.textContent = "Update";
+  btnUpDate.classList.add("btn-task-update");
+
+  const btnDel = document.createElement("button");
+  btnDel.textContent = "Delete";
+  btnDel.classList.add("btn-task-delete");
+
+  taskBtns.append(btnDone, btnUpDate, btnDel);
+
+  if (todo.completed) {
+    btnDone.setAttribute("disabled", true);
+    btnUpDate.setAttribute("disabled", true);
+  }
+  return taskBtns;
+};
+
 btnSubmit.addEventListener("click", (event) => {
   event.preventDefault();
 
   const err = validation(inputTitle.value, textareaDescription.value);
 
-  if (!err) {
-    todo.createTodo(inputTitle.value, textareaDescription.value);
+  if (!err) {   
+
+    if(editId){
+      todo.updateTodo(editId, {title:inputTitle.value, description:textareaDescription.value})
+     editId = null;
+    }else{
+      todo.createTodo(inputTitle.value, textareaDescription.value);
+    }
     todo.saveToDo();
+
     inputTitle.value = "";
     textareaDescription.value = "";
     spanTitle.hidden = true;
@@ -83,6 +124,7 @@ btnSubmit.addEventListener("click", (event) => {
     textareaDescription.classList.remove("err-textarea-description");
     spanTitle.textContent = "";
     spanDescription.textContent = "";
+
     renderTodoList(todo.list);
   }
   if (err?.input) {
@@ -95,158 +137,52 @@ btnSubmit.addEventListener("click", (event) => {
     spanDescription.hidden = false;
     spanDescription.textContent = err.description;
   }
-
-  console.log(todo.list);
 });
-const createTaskTitle = (todo) => {
-  const taskTitle = document.createElement("div");
-  const h2 = document.createElement("h2");
-  h2.textContent = todo.title;
-  const p = document.createElement("p");
-  p.textContent = todo.description;
-  taskTitle.append(h2, p);
-  return taskTitle;
-};
-const createTaskBtns = () => {
-  const taskBtns = document.createElement("div");
-  taskBtns.classList.add("task-btns");
-  const btnDone = document.createElement("button");
-  btnDone.textContent = "Done";
-  btnDone.classList.add('btn-task-done');
-  const btnUpDate = document.createElement("button");
-  btnUpDate.textContent = "Update";
-  btnUpDate.classList.add('btn-task-update');
-  const btnDel = document.createElement("button");
-  btnDel.textContent = "Delete";
-  btnDel.classList.add('btn-task-delete');
-  taskBtns.append(btnDone, btnUpDate, btnDel);
-  return taskBtns;
-};
-
-
-const taskBtns = document.querySelector(".task-btns");
-// const btnTaskDone = document.querySelector(".btn-task-done");
-// const btnTaskUpdate = document.querySelector(".btn-task-update");
-// const btnTaskDelete = document.querySelector(".btn-task-delete");
 
 const renderTodoList = (list) => {
   todoList.innerHTML = "";
 
   list.forEach((task) => {
     const todoTask = document.createElement("div");
-    // todoTask.id = task.id;
     todoTask.classList.add("todo-task");
     const taskTitle = createTaskTitle(task);
-    const taskBtns = createTaskBtns();
+    const taskBtns = createTaskBtns(task);
     todoTask.append(taskTitle, taskBtns);
     todoList.append(todoTask);
 
-    taskBtns.addEventListener('click', (event) =>{
-      switch(true){
-        case event.target.classList.contains('btn-task-done'):
-          console.log(task);
-        todo.updateTodo(task.id, { completed: true })
-        console.log(task);
-          console.log(task.id);
-        
+    taskBtns.addEventListener("click", (event) => {
+      switch (true) {
+        case event.target.classList.contains("btn-task-done"):
+          todo.updateTodo(task.id, { completed: true });
+          renderTodoList(todo.list);
           break;
+        case event.target.classList.contains("btn-task-delete"):
+          todo.deleteTodo(task.id);
+          renderTodoList(todo.list);
+          break;
+        case event.target.classList.contains("btn-task-update"):
+          inputTitle.value = task.title;
+          textareaDescription.value = task.description;
+          editId = task.id;
       }
-        })
-
-
-
+      todo.saveToDo();
+    });
   });
-
- 
-
-
-
-
-
-
-
 };
 
-btnSortTitle.addEventListener('click', () =>{
-todo.sortByTitle()
-renderTodoList(todo.list)
-})
+btnSortTitle.addEventListener("click", () => {
+  todo.sortByTitle();
+  renderTodoList(todo.list);
+});
 
-btnSortDescription.addEventListener('click', () =>{
+btnSortDescription.addEventListener("click", () => {
   todo.sortByDescription();
-  renderTodoList(todo.list)
-})
+  renderTodoList(todo.list);
+});
 
-inputSearch.addEventListener('input', (event) =>{
-event.preventDefault()
-renderTodoList(todo.searchByTitle(event.target.value))
-})
-
-
-
-
-
+inputSearch.addEventListener("input", (event) => {
+  event.preventDefault();
+  renderTodoList(todo.searchByTitle(event.target.value));
+});
 
 renderTodoList(JSON.parse(localStorage.getItem("todoList")) ?? []);
-
-
-// const renderTodoList = (todoList) => {
-//   listContainer.innerHTML = "";
-//   todoList.forEach((todo) => {
-//     const todoCard = document.createElement("div");
-//     todoCard.classList.add("todo-card");
-//     listContainer.append(todoCard);
-
-//     const cardText = document.createElement("div");
-//     cardText.classList.add("card-text");
-//     todoCard.append(cardText);
-
-//     const cardTitle = document.createElement("p");
-//     cardTitle.classList.add("card-title");
-//     cardTitle.textContent = todo.title;
-//     cardText.append(cardTitle);
-
-//     const cardDescription = document.createElement("p");
-//     cardDescription.classList.add("card-description");
-//     cardDescription.textContent = todo.description;
-//     cardText.append(cardDescription);
-
-//     const cardActions = document.createElement("div");
-//     cardActions.classList.add("card-actions");
-//     todoCard.append(cardActions);
-//     if (!todo.completed) {
-//       const checkBtn = document.createElement("button");
-//       checkBtn.classList.add("btn");
-//       checkBtn.classList.add("card-check");
-//       checkBtn.textContent = "Complete";
-
-//       const editBtn = document.createElement("button");
-//       editBtn.classList.add("btn");
-//       editBtn.classList.add("update-card");
-//       editBtn.textContent = "Edit";
-//       cardActions.append(checkBtn, editBtn);
-//     }
-//     const deleteBtn = document.createElement("button");
-//     deleteBtn.classList.add("btn");
-//     deleteBtn.classList.add("delete-card");
-//     deleteBtn.textContent = "Delete";
-
-//     cardActions.append(deleteBtn);
-
-//     cardActions.addEventListener("click", (e) => {
-//       switch (true) {
-//         case e.target.classList.contains("card-check"):
-//           todos.updateTodo(todo.id, { completed: true });
-//           renderTodoList(todos.list);
-//           break;
-//         case e.target.classList.contains("update-card"):
-//           console.log(todo.id);
-//           break;
-//         case e.target.classList.contains("delete-card"):
-//           todos.deleteTodo(todo.id);
-//           renderTodoList(todos.list);
-//           break;
-//       }
-//     });
-//   });
-// };
