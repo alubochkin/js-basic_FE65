@@ -40,17 +40,17 @@ const renderUsers = (users) => {
   rootDiv.append(ul, buttonShowMore);
 };
 
-const fetchUsers = (url) => {
+const fetchUsers = async (url) => {
   renderLoading();
 
-  fetch(url)
-    .then((res) => res.json())
-    .then((data) => {
-      renderUsers(data.results);
-    })
-    .catch(() => {
-      renderError();
-    });
+  try {
+    const res = await fetch(url);
+    const data = await res.json();
+
+    renderUsers(data.results);
+  } catch (err) {
+    renderError();
+  }
 };
 
 fetchUsers(`https://randomuser.me/api/?results=${results}`);
