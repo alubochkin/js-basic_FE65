@@ -38,17 +38,31 @@ const renderUsers = (users) => {
     fetchUsers(`https://randomuser.me/api/?results=${results}`);
   });
 };
-const fetchUsers = (url) => {
+// const fetchUsers = (url) => {
+//   renderLoading();
+//   renderFilterUsers();
+//   fetch(url)
+//     .then((response) => response.json())
+//     .then((res) => {
+//       console.log(res);
+//       renderUsers(res.results);
+//     })
+//     .catch(() => {
+//       renderError();
+//     });
+// };
+renderFilterUsers();
+const fetchUsers = async (url) =>{
+try{
   renderLoading();
-  renderFilterUsers();
-  fetch(url)
-    .then((response) => response.json())
-    .then((res) => {
-      console.log(res);
-      renderUsers(res.results);
-    })
-    .catch(() => {
-      renderError();
-    });
-};
+
+  const response = await fetch(url);
+  const data = await response.json();
+  console.log(data);
+renderUsers(data.results)
+} catch{
+  renderError();
+}
+}
+
 fetchUsers(`https://randomuser.me/api/?results=${results}`);

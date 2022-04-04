@@ -1,0 +1,50 @@
+body {
+  padding: 0;
+  margin: 0 100px;
+  box-sizing: border-box;
+}
+li{
+  list-style-type: none;
+}
+ul{
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+#tabs {
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+button {
+  margin: 20px;
+  padding: 20px;
+}
+#inputFilter {
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+}
+.inputSearch {
+  margin: 15px;
+  padding: 10px;
+  width: 260px;
+  height: 40px;
+  font-size: 20px;
+}
+.btnActive {
+  background-color: red;
+}
+
+#btnFilterTodo {
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+}
+#list {
+  border: 3px solid rgb(255, 208, 208);
+  padding: 20px;
+  margin: 20px;
+}
