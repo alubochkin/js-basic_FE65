@@ -1,4 +1,5 @@
 #root {
+<<<<<<< HEAD
     max-width: 600px;
     margin: 24px auto 0px;
 }
@@ -29,3 +30,35 @@
 .users>.user:not(:last-child) {
     margin-bottom: 8px;
 }
+=======
+  max-width: 600px;
+  margin: 24px auto 0px;
+}
+
+.loader {
+  font-size: 24px;
+  color: gray;
+}
+
+.error {
+  font-size: 24px;
+  color: red;
+}
+
+.users {
+  margin: 0px;
+  padding: 0px;
+  list-style: none;
+}
+
+.users > .user {
+  padding: 8px;
+  font-size: 16px;
+  border: 1px solid gray;
+  border-radius: 4px;
+}
+
+.users > .user:not(:last-child) {
+  margin-bottom: 8px;
+}
+>>>>>>> 9dcb483bf75ad628253d7be17cac5772fa3e7dd9
