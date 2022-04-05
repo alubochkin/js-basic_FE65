@@ -20,6 +20,18 @@ let posts = null;
 let todos = null;
 let users = null;
 
+let postsLimit = 5;
+let postsFilterValue = "";
+let postsCommentsById = {
+  1: [],
+  2: [],
+};
+
+onclick = () => {
+  postsLimit += 5;
+  renderPostsList();
+};
+
 const renderLoading = () => {};
 
 const renderError = () => {};
@@ -58,9 +70,44 @@ const renderTabs = () => {
   tabs.append(postsBtn, todosBtn, usersBtn);
 };
 
-const renderInput = () => {};
+const renderInput = (e) => {
+  // create input
+  input.oninput = (e) => {
+    if (tabName === "posts") {
+      postsFilterValue = e.target.value;
+      renderPostsList(posts);
+    }
+  };
+};
 
-const renderPostsList = (posts) => {};
+const fetchCommentsById = (id) => {
+  fetch(`https://jsonplaceholder.typicode.com/posts/${id}/comments`).then(
+    (comments) => {
+      postsCommentsById[id] = comments;
+      renderPostsList(posts);
+    }
+  );
+};
+
+const renderPostsList = (posts) => {
+  posts
+    .filter((post) => post.title.includes(postsFilterValue))
+    .slice(0, postsLimit)
+    .forEach((post) => {
+      const li = document.createElement("li");
+
+      if (postsCommentsById[post.id]) {
+        // renderComments;
+      } else {
+        const button = document.createElement("button");
+        button.onclick = () => {
+          fetchCommentsBy(post.id);
+        };
+      }
+
+      ul.append(li);
+    });
+};
 
 const renderTodosList = (todos) => {};
 
@@ -83,7 +130,6 @@ const fetchData = () => {
       users = usersData;
 
       renderTabs();
-      // renderInput()
       // renderPostList(postsData)
     })
     .catch(() => {
