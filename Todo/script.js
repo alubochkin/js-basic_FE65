@@ -62,26 +62,27 @@ const validation = (input, description) => {
   if (description.length > 10) {
     error.description = "max length 100";
   }
-
   return Object.keys(error).length ? error : null;
 };
 
 removeErrTitles = () => {
   spanTitle.hidden = true;
   spanDescription.hidden = true;
+
   inputTitle.classList.remove("err-input-title");
   textareaDescription.classList.remove("err-textarea-description");
+
   spanTitle.textContent = "";
   spanDescription.textContent = "";
 };
 
 const createTaskTitle = (todo) => {
   const taskTitle = document.createElement("div");
-  const h2 = document.createElement("h2");
+    const h2 = document.createElement("h2");
   h2.textContent = todo.title;
-
   const p = document.createElement("p");
   p.textContent = todo.description;
+
   taskTitle.append(h2, p);
   return taskTitle;
 };
