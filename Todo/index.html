@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title></title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="main-container">
+      <div class="form-container">
+        <form>
+          <input type="text" class="input-title"/>
+          <span class="err-span-title" hidden>sdgfh</span>
+          <textarea cols="30" rows="10" class="textarea-description"></textarea>
+          <span class="err-span-description" hidden>sdfgh</span>
+          <div class="btns-container">
+            <button class="btn-submit">submit</button>
+            <button class="btn-reset" type="reset">reset</button>
+          </div>
+        </form>
+      </div>
+      <div class="todo-container">
+        <div class="search-sort-btns">
+          <input type="search" class="input-search" />
+          <button class="btn-sort-title">sort title</button>
+          <button class="btn-sort-description">sort description</button>
+        </div>
+        <div class="todo-list">
+          <div class="todo-task">
+            <div class="task-title">
+              <h2>title</h2>
+              <p>description</p>
+            </div>
+
+            <div class="task-btns">
+              <button class="btn-task-done">Done</button>
+              <button class="btn-task-update">Update</button>
+              <button class="btn-task-delete">Delete</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="script.js"></script>
+</html>
