@@ -44,9 +44,11 @@ const divBtnLoadMore = document.getElementById("loadMore");
 const renderLoading = () => {
   divLoadErr.innerHTML = '<span class="loading"> Loading...</span>';
 };
+
 const renderError = (err) => {
   divLoadErr.innerHTML = `<span class="err"> ${err}</span>`;
 };
+
 // TABS
 
 const renderTabs = () => {
@@ -94,17 +96,19 @@ const renderInput = () => {
   divSearchInput.append(inputSearch);
 
   inputSearch.addEventListener("input", (event) => {
-    if (activeTabs === "posts") {
-      postsFilterValue = event.target.value;
-      renderPostList(posts);
-    }
-    if (activeTabs === "users") {
-      usersFilterValue = event.target.value;
-      renderUsersList(users);
-    }
-    if (activeTabs === "todos") {
-      todosFilterValue = event.target.value;
-      renderTodoList(todos);
+    switch (activeTabs) {
+      case "posts":
+        postsFilterValue = event.target.value;
+        renderPostList(posts);
+        break;
+      case "users":
+        usersFilterValue = event.target.value;
+        renderUsersList(users);
+        break;
+      case "todos":
+        todosFilterValue = event.target.value;
+        renderTodoList(todos);
+        break;
     }
   });
 };
@@ -116,12 +120,9 @@ const fetchCommentsById = (id) => {
   fetch(`https://jsonplaceholder.typicode.com/posts/${id}/comments`)
     .then((response) => response.json())
     .then((comments) => {
-    
       postsCommentsById[id] = comments;
       renderPostList(posts);
       divLoadErr.innerHTML = "";
-
-      // return postsCommentsById;
     })
     .catch((err) => {
       renderError(err);
@@ -129,21 +130,17 @@ const fetchCommentsById = (id) => {
 };
 
 const renderComments = (data) => {
-  console.log(data);
-
-  data.forEach((item) => console.log(item.name));
-
-  const divComments = document.createElement("div");
+  const divComments = document.createElement("div")
+  divComments.classList.add('post-comments');
 
   data.forEach((item) => {
     const h3 = document.createElement("h3");
     h3.textContent = item.name;
-    const p = document.createElement("p");
-    p.textContent = item.body;
-    divComments.append(h3, p);
-    console.log(divComments);
-    return divComments;
+    const span = document.createElement("span");
+    span.textContent = item.body;
+    divComments.append(h3, span);
   });
+  return divComments;
 };
 
 const renderBtnComments = (data) => {
@@ -152,9 +149,6 @@ const renderBtnComments = (data) => {
 
   button.addEventListener("click", () => {
     fetchCommentsById(data.id);
-    console.log(postsCommentsById);
-
-    // renderComments(postsCommentsById);
   });
   return button;
 };
@@ -188,8 +182,6 @@ const renderPostList = (data) => {
       li.append(h2, p, divComments);
       ul.append(li);
     });
-
-  // console.log(data);
 };
 
 //LIST renderTodo
@@ -201,16 +193,16 @@ const renderFilterTodoList = (data) => {
 
   data
     .filter((todo) => {
-      if (sortStatusTodo === "filterByCompleted") {
-        return (
-          todo.completed &&
-          todo.title.toLowerCase().includes(todosFilterValue.toLowerCase())
-        );
-      }
-      if (sortStatusTodo === "filterByAll") {
-        return todo.title
-          .toLowerCase()
-          .includes(todosFilterValue.toLowerCase());
+      switch (sortStatusTodo) {
+        case "filterByCompleted":
+          return (
+            todo.completed &&
+            todo.title.toLowerCase().includes(todosFilterValue.toLowerCase())
+          );
+        case "filterByAll":
+          return todo.title
+            .toLowerCase()
+            .includes(todosFilterValue.toLowerCase());
       }
     })
     .slice(0, todoEnd)
@@ -233,30 +225,30 @@ const renderTodoList = (data) => {
 
     const btnTodoAll = document.createElement("button");
     btnTodoAll.textContent = "All TODO";
-    const btnTodoComplited = document.createElement("button");
-    btnTodoComplited.textContent = "TODO Complited";
+    const btnTodoCompleted = document.createElement("button");
+    btnTodoCompleted.textContent = "TODO Completed";
 
-    divFilterTodo.append(btnTodoAll, btnTodoComplited);
+    divFilterTodo.append(btnTodoAll, btnTodoCompleted);
 
     if (sortStatusTodo === "filterByAll") {
       btnTodoAll.classList.add("btnActive");
     } else {
-      btnTodoComplited.classList.add("btnActive");
+      btnTodoCompleted.classList.add("btnActive");
     }
 
     renderFilterTodoList(data);
 
     btnTodoAll.addEventListener("click", () => {
       btnTodoAll.classList.add("btnActive");
-      btnTodoComplited.classList.remove("btnActive");
+      btnTodoCompleted.classList.remove("btnActive");
 
       divList.innerHTML = "";
       sortStatusTodo = "filterByAll";
       renderFilterTodoList(data);
     });
 
-    btnTodoComplited.addEventListener("click", () => {
-      btnTodoComplited.classList.add("btnActive");
+    btnTodoCompleted.addEventListener("click", () => {
+      btnTodoCompleted.classList.add("btnActive");
       btnTodoAll.classList.remove("btnActive");
 
       divList.innerHTML = "";
@@ -264,9 +256,7 @@ const renderTodoList = (data) => {
       renderFilterTodoList(data);
     });
   };
-
   renderBtnFilterTodo();
-  console.log(data);
 };
 
 //LIST renderUsers
@@ -286,8 +276,6 @@ const renderUsersList = (data) => {
     .forEach((user) => {
       ul.innerHTML += `<li> <h2>${user.name}</h2> <p>${user.email}</p> <p>Address: ${user.address.city}</p> <p>Company: ${user.company.name}</p>  </li>`;
     });
-
-  console.log(data);
 };
 
 //BtnLoadMore

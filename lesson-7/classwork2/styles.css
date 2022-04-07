@@ -6,11 +6,20 @@ body {
 li{
   list-style-type: none;
 }
-ul{
-  display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
-  justify-content: space-between;
+h2{
+  font-size: 25px;
+}
+h3{
+  margin: 10px;
+}
+.post-comments{
+  font-size: 15px;
+  margin: 2px;
+  border: solid 1px gray;
+  padding: 5px;
+}
+span{
+  font-size: 14px;
 }
 #tabs {
   padding: 10px;
