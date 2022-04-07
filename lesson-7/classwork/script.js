@@ -37,7 +37,7 @@ const renderUsers = (users) => {
   divWrap.append(ul, btnMore);
 };
 
-const fetchUsers = (url) => {
+/*const fetchUsers = (url) => {
   renderLoading();
 
   fetch(url)
@@ -48,10 +48,10 @@ const fetchUsers = (url) => {
 
     .catch(() => renderError());
 };
-
+*/
 fetchUsers(`https://randomuser.me/api/?results=${results}`);
 async function fetchUsers(url) {
-  renderLosding();
+  renderLoading();
   try {
     const res = await fetch(url);
     const data = await res.json();
@@ -62,17 +62,3 @@ async function fetchUsers(url) {
     console.log("finally");
   }
 }
-
-/*async function asyncFunc() {
-  try {
-    const success = await successPromise();
-    console.log(success); // success
-
-    const err = await errorPromise(); // в errorPromise ошибка, код переходит в блок catch
-    console.log(err);
-  } catch (error) {
-    console.log(error); // error
-  } finally {
-    console.log("finally");
-  }
-}*/
